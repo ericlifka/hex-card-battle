@@ -1,3 +1,19 @@
 <div class="header">
     Game: {{model.id}}
 </div>
+
+<div class="board">
+
+    {{#each model.board.rows as |row|}}
+        <div class="row">
+
+            {{#each row as |cell|}}
+                <div class="cell {{cell.type}}">
+                    {{cell.type}}
+                </div>
+            {{/each}}
+
+        </div>
+    {{/each}}
+
+</div>
