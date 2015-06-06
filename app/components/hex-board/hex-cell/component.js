@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    classNameBindings: [':hex', 'cell.type'],
+    classNameBindings: ['cell.type'],
 
     cell: null
 });
