@@ -1,6 +1,3 @@
-@hex-default-color: #dbdbdb;
-@hex-default-color-hover: #efefef;
-
 & {
   padding: 10px;
   margin: 10px;
@@ -15,48 +12,5 @@
 
   &:nth-child(2) {
     margin-left: 55px;
-  }
-}
-
-.hex {
-  position: relative;
-  display: inline-block;
-  margin-top: 30px;
-  width: 104px;
-  height: 60px;
-  background-color: @hex-default-color;
-
-  &:before {
-    position: absolute;
-    content: " ";
-    width: 0;
-    height: 0;
-    top: -30px;
-    border-bottom: 30px solid @hex-default-color;
-    border-left: 52px solid transparent;
-    border-right: 52px solid transparent;
-  }
-
-  &:after {
-    position: absolute;
-    content: " ";
-    width: 0;
-    height: 0;
-    bottom: -30px;
-    border-top: 30px solid @hex-default-color;
-    border-left: 52px solid transparent;
-    border-right: 52px solid transparent;
-  }
-
-  &:hover {
-    background-color: @hex-default-color-hover;
-  }
-
-  &:hover:before {
-    border-bottom-color: @hex-default-color-hover;
-  }
-
-  &:hover:after {
-    border-top-color: @hex-default-color-hover
   }
 }
