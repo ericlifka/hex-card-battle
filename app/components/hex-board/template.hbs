@@ -1,0 +1,9 @@
+{{#each board.rows as |row|}}
+    <div class="row">
+
+        {{#each row as |cell|}}
+            <div class="hex {{cell.type}}"></div>
+        {{/each}}
+
+    </div>
+{{/each}}
