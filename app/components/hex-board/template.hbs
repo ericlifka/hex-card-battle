@@ -2,7 +2,7 @@
     <div class="row">
 
         {{#each row as |cell|}}
-            <div class="hex {{cell.type}}"></div>
+            {{component "hex-board/hex-cell"}}
         {{/each}}
 
     </div>
