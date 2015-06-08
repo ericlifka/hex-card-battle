@@ -1,5 +1,6 @@
 @hex-default-color: #dbdbdb;
 @hex-default-color-hover: #efefef;
+@hex-active-color: #b7ebb3;
 
 & {
   position: relative;
@@ -34,12 +35,20 @@
   &:hover {
     background-color: @hex-default-color-hover;
   }
-
   &:hover:before {
     border-bottom-color: @hex-default-color-hover;
   }
-
   &:hover:after {
     border-top-color: @hex-default-color-hover
+  }
+
+  &.active {
+    background-color: @hex-active-color;
+  }
+  &.active:before {
+    border-bottom-color: @hex-active-color;
+  }
+  &.active:after {
+    border-top-color: @hex-active-color;
   }
 }
