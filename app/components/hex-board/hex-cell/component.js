@@ -1,7 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    classNameBindings: ['cell.type'],
+    classNameBindings: ['cell.type', 'active:active'],
 
-    cell: null
+    cell: null,
+    active: false,
+
+    click() {
+        this.toggleProperty('active');
+    }
 });
