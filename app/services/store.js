@@ -1,7 +1,16 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-    sayHi() {
-        console.log('hi');
+    newSquareBoard(id) {
+        return {
+            id,
+            board: {
+                rows: [
+                    [{type: 'normal'},{type: 'normal'},{type: 'normal'}],
+                    [{type: 'normal'},{type: 'normal'},{type: 'normal'}],
+                    [{type: 'normal'},{type: 'normal'},{type: 'normal'}]
+                ]
+            }
+        };
     }
 });
