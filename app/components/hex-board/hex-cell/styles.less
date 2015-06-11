@@ -3,6 +3,41 @@
 @hex-active-color: #b7ebb3;
 @hex-active-hover-color: #C8FFC3;
 
+.tile-type(@hover, @active, @activeHover) {
+  /* hover */
+  &:hover {
+    background-color: @hover;
+  }
+  &:hover:before {
+    border-bottom-color: @hover;
+  }
+  &:hover:after {
+    border-top-color: @hover;
+  }
+
+  /* active */
+  &.active {
+    background-color: @active;
+  }
+  &.active:before {
+    border-bottom-color: @active;
+  }
+  &.active:after {
+    border-top-color: @active;
+  }
+
+  /* active & hover */
+  &.active:hover {
+    background-color: @activeHover;
+  }
+  &.active:hover:before {
+    border-bottom-color: @activeHover;
+  }
+  &.active:hover:after {
+    border-top-color: @activeHover;
+  }
+}
+
 & {
   position: relative;
   display: inline-block;
@@ -34,36 +69,5 @@
     border-right: 52px solid transparent;
   }
 
-  /* hover */
-  &:hover {
-    background-color: @hex-default-color-hover;
-  }
-  &:hover:before {
-    border-bottom-color: @hex-default-color-hover;
-  }
-  &:hover:after {
-    border-top-color: @hex-default-color-hover
-  }
-
-  /* active */
-  &.active {
-    background-color: @hex-active-color;
-  }
-  &.active:before {
-    border-bottom-color: @hex-active-color;
-  }
-  &.active:after {
-    border-top-color: @hex-active-color;
-  }
-
-  /* hover & active */
-  &.active:hover {
-    background-color: @hex-active-hover-color;
-  }
-  &.active:hover:before {
-    border-bottom-color: @hex-active-hover-color;
-  }
-  &.active:hover:after {
-    border-top-color: @hex-active-hover-color;
-  }
+  .tile-type(@hex-default-color-hover, @hex-active-color, @hex-active-hover-color);
 }
