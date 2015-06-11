@@ -1,16 +1,24 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-    newSquareBoard(id) {
-        return Ember.Object.create({
-            id,
-            board: {
-                rows: [
-                    [{type: 'normal'},{type: 'normal'},{type: 'normal'}],
-                    [{type: 'normal'},{type: 'normal'},{type: 'normal'}],
-                    [{type: 'normal'},{type: 'normal'},{type: 'normal'}]
-                ]
+    newSquareBoard(id, size=10) {
+        const board = Ember.Object.create({ id });
+        const rows = [];
+
+        for (let i = 0; i < size; i++) {
+            const row = [];
+
+            for (let j = 0; j < size; j++) {
+                row.push(Ember.Object.create({
+                    type: 'normal'
+                }));
             }
-        });
+
+            rows.push(row);
+        }
+
+        board.set('board', Ember.Object.create({ rows }));
+
+        return board;
     }
 });
