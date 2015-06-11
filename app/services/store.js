@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
     newSquareBoard(id) {
-        return {
+        return Ember.Object.create({
             id,
             board: {
                 rows: [
@@ -11,6 +11,6 @@ export default Ember.Service.extend({
                     [{type: 'normal'},{type: 'normal'},{type: 'normal'}]
                 ]
             }
-        };
+        });
     }
 });
