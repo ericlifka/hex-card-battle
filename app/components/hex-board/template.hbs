@@ -1,8 +1,8 @@
 {{#each board.rows as |row|}}
     <div class="row">
 
-        {{#each row as |cell|}}
-            {{component "hex-board/hex-cell" cell=cell}}
+        {{#each row as |hex|}}
+            {{component "hex-board/hex-tile" hex=hex}}
         {{/each}}
 
     </div>

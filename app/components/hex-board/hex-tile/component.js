@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    classNameBindings: ['cell.type', 'active:active'],
+    classNameBindings: ['hex.type', 'active:active'],
 
-    cell: null,
+    hex: null,
     active: false,
 
     click() {
