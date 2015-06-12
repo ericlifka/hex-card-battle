@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-    newSquareBoard(id, size = 10) {
-        const board = Ember.Object.create({id});
+    newGame(id, size = 10) {
+        const game = Ember.Object.create({id});
         const rows = [];
 
         for (let height = size % 2 === 0 ? size + 1 : size,
@@ -21,8 +21,8 @@ export default Ember.Service.extend({
             rows.push(row);
         }
 
-        board.set('board', Ember.Object.create({rows}));
+        game.set('board', Ember.Object.create({rows}));
 
-        return board;
+        return game;
     }
 });

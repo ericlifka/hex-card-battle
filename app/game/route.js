@@ -4,7 +4,7 @@ const GameRoute = Ember.Route.extend({
     store: Ember.inject.service(),
 
     model(params) {
-        return this.get('store').newSquareBoard(params.game_id, 6);
+        return this.get('store').newGame(params.game_id, 6);
     }
 });
 
