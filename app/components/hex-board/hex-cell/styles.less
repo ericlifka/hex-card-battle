@@ -1,9 +1,4 @@
-@hex-default-color: #dbdbdb;
-@hex-default-color-hover: #efefef;
-@hex-active-color: #b7ebb3;
-@hex-active-hover-color: #C8FFC3;
-
-.tile-type(@normal, @hover, @active, @activeHover) {
+.tile-type(@normal, @hover, @active, @secondary) {
   /* normal */
   & {
     background-color: @normal;
@@ -17,17 +12,17 @@
   }
 
   /* hover */
-  &:hover {
+  &:hover, &.active:hover, &.secondary:hover {
     background-color: @hover;
   }
-  &:hover:before {
+  &:hover:before, &.active:hover:before, &.secondary:hover:before {
     border-bottom-color: @hover;
   }
-  &:hover:after {
+  &:hover:after, &.active:hover:after, &.secondary:hover:after {
     border-top-color: @hover;
   }
 
-  /* active */
+  /* selected */
   &.active {
     background-color: @active;
   }
@@ -38,15 +33,15 @@
     border-top-color: @active;
   }
 
-  /* active & hover */
-  &.active:hover {
-    background-color: @activeHover;
+  /* secondary selection */
+  &.secondary {
+    background-color: @secondary;
   }
-  &.active:hover:before {
-    border-bottom-color: @activeHover;
+  &.secondary:before {
+    border-bottom-color: @secondary;
   }
-  &.active:hover:after {
-    border-top-color: @activeHover;
+  &.secondary:after {
+    border-top-color: @secondary;
   }
 }
 
@@ -81,7 +76,23 @@
     border-right: 52px solid transparent;
   }
 
+  @normal-color: #dbdbdb;
+  @hover-color: #ffffff;
+  @active-color: #f4f4f4;
+  @secondary-color: #e7e7e7;
   &.normal {
-    .tile-type(@hex-default-color, @hex-default-color-hover, @hex-active-color, @hex-active-hover-color);
+    .tile-type(
+    @normal-color,
+    @hover-color,
+    @active-color,
+    @secondary-color);
+  }
+  &.forest {
+    .tile-type(
+    rgb(189, 210, 189),
+    #fff,
+    rgb(241, 252, 241),
+    rgb(210, 241, 210)
+    );
   }
 }
