@@ -3,7 +3,19 @@
 @hex-active-color: #b7ebb3;
 @hex-active-hover-color: #C8FFC3;
 
-.tile-type(@hover, @active, @activeHover) {
+.tile-type(@normal, @hover, @active, @activeHover) {
+  /* normal */
+  & {
+    background-color: @normal;
+    cursor: pointer;
+  }
+  &:before {
+    border-bottom-color: @normal;
+  }
+  &:after {
+    border-top-color: @normal;
+  }
+
   /* hover */
   &:hover {
     background-color: @hover;
@@ -45,8 +57,7 @@
   min-width: 104px;
   margin-left: 3px;
   height: 60px;
-  background-color: @hex-default-color;
-  cursor: pointer;
+  background-color: transparent;
 
   &:before {
     position: absolute;
@@ -54,7 +65,7 @@
     width: 0;
     height: 0;
     top: -30px;
-    border-bottom: 30px solid @hex-default-color;
+    border-bottom: 30px solid transparent;
     border-left: 52px solid transparent;
     border-right: 52px solid transparent;
   }
@@ -65,10 +76,12 @@
     width: 0;
     height: 0;
     bottom: -30px;
-    border-top: 30px solid @hex-default-color;
+    border-top: 30px solid transparent;
     border-left: 52px solid transparent;
     border-right: 52px solid transparent;
   }
 
-  .tile-type(@hex-default-color-hover, @hex-active-color, @hex-active-hover-color);
+  &.normal {
+    .tile-type(@hex-default-color, @hex-default-color-hover, @hex-active-color, @hex-active-hover-color);
+  }
 }
