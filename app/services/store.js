@@ -5,12 +5,16 @@ export default Ember.Service.extend({
         const board = Ember.Object.create({id});
         const rows = [];
 
-        for (let i = 0; i < size; i++) {
+        for (let i = 0,
+                 height = size % 2 === 0 ? size + 1 : size;
+             i < height;
+             i++) {
+
             const row = [];
 
             for (let j = 0,
-                     cap = i % 2 === 0 ? size : size + 1;
-                 j < cap;
+                     width = i % 2 === 0 ? size : size + 1;
+                 j < width;
                  j++) {
 
                 row.push(Ember.Object.create({
