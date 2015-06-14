@@ -18,7 +18,7 @@ export default Ember.Service.extend({
                      j = 0; j < width; j++) {
 
                 row.push(Ember.Object.create({
-                    type: 'normal'
+                    type: 'lake'
                 }));
             }
 
