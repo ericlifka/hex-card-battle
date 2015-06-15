@@ -36,7 +36,7 @@ export default Ember.Service.extend({
             for (let col = 0; col < rows[row].length; col++) {
                 const hex = rows[row][col];
 
-                const x = col - (row - (row & 1)) / 2;
+                const x = col - (row + (row & 1)) / 2;
                 const z = row;
                 const y = -x - z;
 
