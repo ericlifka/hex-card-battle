@@ -26,6 +26,22 @@ export default Ember.Service.extend({
         }
         board.set('rows', rows);
 
+        this.setCubeCoords(rows);
+
         return game;
+    },
+
+    setCubeCoords(rows) {
+        for (let row = 0; row < rows.length; row++) {
+            for (let col = 0; col < rows[row].length; col++) {
+                const hex = rows[row][col];
+
+                const x = col - (row - (row & 1)) / 2;
+                const z = row;
+                const y = -x - z;
+
+                hex.setProperties({x, y, z});
+            }
+        }
     }
 });
