@@ -1,12 +1,10 @@
 import Ember from 'ember';
 
-import Board from '../models/board';
 import Game from '../models/game';
 
 export default Ember.Service.extend({
     newGame(id, size = 10) {
-        const board = Board.create();
-        const game = Game.create({id, board});
+        const game = Game.create({id});
 
         const rows = [];
         for (let height = size % 2 === 0 ? size + 1 : size,
@@ -24,7 +22,7 @@ export default Ember.Service.extend({
 
             rows.push(row);
         }
-        board.set('rows', rows);
+        game.set('board', rows);
 
         this.setCubeCoords(rows);
 
