@@ -33,13 +33,7 @@ export default Ember.Service.extend({
     setCubeCoords(rows) {
         for (let row = 0; row < rows.length; row++) {
             for (let col = 0; col < rows[row].length; col++) {
-                const hex = rows[row][col];
-
-                const x = col - (row + (row & 1)) / 2;
-                const z = row;
-                const y = -x - z;
-
-                hex.set('coord', CubeCoord.create({x, y, z}));
+                Ember.set(rows[row][col], 'coord', CubeCoord.fromRowCol(row, col));
             }
         }
     }
