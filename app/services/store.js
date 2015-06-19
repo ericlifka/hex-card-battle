@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 import Game from '../models/game';
+import CubeCoord from '../models/cube-coord';
 
 export default Ember.Service.extend({
     newGame(id, size = 10) {
@@ -38,7 +39,7 @@ export default Ember.Service.extend({
                 const z = row;
                 const y = -x - z;
 
-                hex.setProperties({x, y, z});
+                hex.set('coord', CubeCoord.create({x, y, z}));
             }
         }
     }
