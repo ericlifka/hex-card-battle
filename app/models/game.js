@@ -33,6 +33,12 @@ export default Ember.Object.extend({
     deactivateHex(hex) {
         if (hex) {
             hex.set('state', null);
+            hex.coord.adjacentCoords().forEach(coord => {
+                const adjacentHex = this.lookupHex(coord);
+                if (adjacentHex) {
+                    adjacentHex.set('state', null);
+                }
+            });
         }
     },
 
