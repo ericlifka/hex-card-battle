@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    classNameBindings: [':hex-tile', 'hex.type', 'hex.active:active'],
+    classNameBindings: [':hex-tile', 'hex.type', 'hex.state'],
 
     game: null,
     hex: null,

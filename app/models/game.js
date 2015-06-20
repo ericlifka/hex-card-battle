@@ -20,17 +20,23 @@ export default Ember.Object.extend({
 
     activateHex(hex) {
         if (hex) {
-            hex.set('active', true);
+            hex.set('state', 'active');
+            hex.coord.adjacentCoords().forEach(coord => {
+                const adjacentHex = this.lookupHex(coord);
+                if (adjacentHex) {
+                    adjacentHex.set('state', 'secondary');
+                }
+            });
         }
     },
 
     deactivateHex(hex) {
         if (hex) {
-            hex.set('active', false);
+            hex.set('state', null);
         }
     },
 
-    lookupHex(x, y, z) {
+    lookupHex({x, y, z}) {
         const col = x + (z + (z & 1)) / 2;
         const row = z;
         const board = this.get('board');
