@@ -6,7 +6,18 @@ const CubeCoord = Ember.Object.extend({
     z: 0,
 
     adjacentCoords() {
+        const x = this.get('x');
+        const y = this.get('y');
+        const z = this.get('z');
 
+        return [
+            CubeCoord.fromCube(x-1, y+1, z),
+            CubeCoord.fromCube(x+1, y-1, z),
+            CubeCoord.fromCube(x, y-1, z+1),
+            CubeCoord.fromCube(x, y+1, z-1),
+            CubeCoord.fromCube(x+1, y, z-1),
+            CubeCoord.fromCube(x-1, y, z+1)
+        ];
     }
 });
 
