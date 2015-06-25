@@ -9,6 +9,7 @@ Router.map(function () {
     this.resource('game', {
         path: '/game/:game_id'
     });
+    this.route('new-game');
 });
 
 export default Router;
