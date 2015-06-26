@@ -1,6 +1,12 @@
 <h3>setup-game-component</h3>
 
 <div>
-    <label>Number of players</label>
-    {{view "select" content=names}}
+    <label for="playerCount">Number of players</label>
+    <select id="playerCount" {{action 'change' on='change'}}>
+        {{#each playerCounts key="@index" as |value|}}
+            <option value="{{value}}">
+                {{value}}
+            </option>
+        {{/each}}
+    </select>
 </div>
