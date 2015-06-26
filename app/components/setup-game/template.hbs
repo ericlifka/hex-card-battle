@@ -4,7 +4,7 @@
     <label for="playerCount">Number of players</label>
     <select id="playerCount" {{action 'change' on='change'}}>
         {{#each playerCounts key="@index" as |value|}}
-            <option value="{{value}}">
+            <option value="{{value}}" selected={{eq value selectedPlayerCount}}>
                 {{value}}
             </option>
         {{/each}}
