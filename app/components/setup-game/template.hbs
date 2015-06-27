@@ -10,3 +10,14 @@
         {{/each}}
     </select>
 </div>
+
+<div>
+    <label for="boardSize">Board Size</label>
+    <select id="boardSize" {{action 'changeBoardSize' on='change'}}>
+        {{#each boardSizes key="@index" as |value|}}
+            <option value="{{value}}" selected={{eq value selectedBoardSize}}>
+                {{value}}
+            </option>
+        {{/each}}
+    </select>
+</div>
