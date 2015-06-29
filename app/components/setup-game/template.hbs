@@ -3,9 +3,10 @@
 {{dynamic-select
     description="Test plx"
     contents=playerCounts
-    action=(action (mut selectedTestValue))
+    selected=selectedPlayerCount
+    action=(action (mut selectedPlayerCount))
 }}
-{{selectedTestValue}}
+{{selectedPlayerCount}}
 <div>
     <label for="playerCount">Number of players</label>
     <select id="playerCount" {{action 'change' on='change'}}>

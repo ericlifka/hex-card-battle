@@ -5,7 +5,7 @@ export default Ember.Component.extend({
 
     description: null,
     contents: null,
-    selectedValue: null,
+    selected: null,
 
     uniqueId: Ember.computed(function () {
         return Ember.generateGuid(this, "dynamic-select-");
@@ -20,7 +20,7 @@ export default Ember.Component.extend({
             const index = selectedOption.index();
             const selected = contents[index];
 
-            this.set('selectedValue', selected);
+            this.set('selected', selected);
             action(selected);
         }
     }
