@@ -1,30 +1,13 @@
 <h3>setup-game-component</h3>
-{{dynamic-select description="Test plx" contents=playerCounts}}
-{{dynamic-select
-    description="Test plx"
-    contents=playerCounts
-    selected=selectedPlayerCount
-    action=(action (mut selectedPlayerCount))
-}}
-{{selectedPlayerCount}}
-<div>
-    <label for="playerCount">Number of players</label>
-    <select id="playerCount" {{action 'change' on='change'}}>
-        {{#each playerCounts key="@index" as |value|}}
-            <option value="{{value}}" selected={{eq value selectedPlayerCount}}>
-                {{value}}
-            </option>
-        {{/each}}
-    </select>
-</div>
 
-<div>
-    <label for="boardSize">Board Size</label>
-    <select id="boardSize" {{action 'changeBoardSize' on='change'}}>
-        {{#each boardSizes key="@index" as |value|}}
-            <option value="{{value}}" selected={{eq value selectedBoardSize}}>
-                {{value}}
-            </option>
-        {{/each}}
-    </select>
-</div>
+{{dynamic-select
+    description="Number of players"
+    contents=playerCountOptions
+    selected=playerCount
+    action=(action (mut playerCount))}}
+
+{{dynamic-select
+    description="Board Size"
+    contents=boardSizeOptions
+    selected=boardSize
+    action=(action (mut boardSize))}}
