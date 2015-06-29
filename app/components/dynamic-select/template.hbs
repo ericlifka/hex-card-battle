@@ -1,5 +1,5 @@
-<label>{{description}}</label>
-<select>
+<label for="{{uniqueId}}">{{description}}</label>
+<select id="{{uniqueId}}">
     {{#each contents key="@index" as |item|}}
         <option value="{{item}}">
             {{item}}
