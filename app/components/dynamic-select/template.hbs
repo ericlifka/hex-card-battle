@@ -1,1 +1,8 @@
-<div>hi</div>
+<label>{{description}}</label>
+<select>
+    {{#each contents key="@index" as |item|}}
+        <option value="{{item}}">
+            {{item}}
+        </option>
+    {{/each}}
+</select>
