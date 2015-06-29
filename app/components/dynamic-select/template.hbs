@@ -1,5 +1,5 @@
 <label for="{{uniqueId}}">{{description}}</label>
-<select id="{{uniqueId}}">
+<select id="{{uniqueId}}" {{action 'change' on='change'}}>
     {{#each contents key="@index" as |item|}}
         <option value="{{item}}">
             {{item}}
