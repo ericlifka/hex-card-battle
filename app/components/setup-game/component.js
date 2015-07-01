@@ -7,5 +7,14 @@ export default Ember.Component.extend({
     playerCount: 2,
 
     boardSizeOptions: ['small', 'medium', 'large'],
-    boardSize: 'small'
+    boardSize: 'small',
+
+    turnDurationOptions: [
+        '1 minute',
+        '10 minutes',
+        '1 hour',
+        '12 hours',
+        '1 day'
+    ],
+    turnDuration: '1 hour'
 });
