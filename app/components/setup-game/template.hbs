@@ -13,6 +13,12 @@
     action=(action (mut boardSize))}}
 
 {{dynamic-select
+    description="Board Shape"
+    contents=boardShapeOptions
+    selected=boardShape
+    action=(action (mut boardShape))}}
+
+{{!dynamic-select
     description="Game Speed"
     contents=turnDurationOptions
     selected=turnDuration
