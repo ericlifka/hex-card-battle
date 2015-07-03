@@ -16,7 +16,7 @@ export default Ember.Component.extend({
         const playerCount = this.get('playerCount');
         const players = [];
 
-        for (let playerNumber = 0; playerNumber < playerCount; playerNumber++) {
+        for (let playerNumber = 1; playerNumber <= playerCount; playerNumber++) {
             players.push(this.playerDescription(playerNumber));
         }
 

@@ -24,6 +24,10 @@
         contents=playerCountOptions
         selected=playerCount
         action=(action (mut playerCount))}}
+
+    {{#each players key="@index" as |player|}}
+        <div>Player {{player.playerNumber}}: {{input type="text" value=player.name}}</div>
+    {{/each}}
 </div>
 
 <div class="submit-button">
