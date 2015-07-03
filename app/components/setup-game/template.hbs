@@ -25,12 +25,14 @@
         selected=playerCount
         action=(action (mut playerCount))}}
 
-    {{#each players key="@index" as |player|}}
-        <div class="player-input">
-            Player {{player.playerNumber}}:
-            {{input type="text" value=player.name}}
-        </div>
-    {{/each}}
+    <div class="players">
+        {{#each players key="@index" as |player|}}
+            <div class="player-input">
+                Player {{player.playerNumber}}:
+                {{input type="text" value=player.name}}
+            </div>
+        {{/each}}
+    </div>
 </div>
 
 <div class="submit-button">
