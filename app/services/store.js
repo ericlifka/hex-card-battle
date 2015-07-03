@@ -3,8 +3,17 @@ import Ember from 'ember';
 import Game from '../models/game';
 import CubeCoord from '../models/cube-coord';
 
+const sizes = {
+    small: 10,
+    medium: 20,
+    large: 40
+};
+
 export default Ember.Service.extend({
-    newGame(id, size = 10) {
+    newGame({playerCount, boardSize, boardShape}) {
+        const size = sizes[boardSize];
+
+
         const game = Game.create({id});
 
         const rows = [];
