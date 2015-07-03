@@ -26,12 +26,6 @@
         action=(action (mut playerCount))}}
 </div>
 
-{{!dynamic-select
-    description="Game Speed"
-    contents=turnDurationOptions
-    selected=turnDuration
-    action=(action (mut gameSpeed))}}
-
 <div class="submit-button">
     <button type="button"
         {{action "createGame"}}>

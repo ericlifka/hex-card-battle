@@ -12,16 +12,6 @@ export default Ember.Component.extend({
     boardShapeOptions: ['hexagon', 'square', 'random'],
     boardShape: 'square',
 
-    /* going with synchronous local turns for first pass to keep focused on gameplay instead of realtime board management */
-    //turnDurationOptions: [
-    //    '1 minute',
-    //    '10 minutes',
-    //    '1 hour',
-    //    '12 hours',
-    //    '1 day'
-    //],
-    //turnDuration: '1 hour'
-
     actions: {
         createGame() {
             this.sendAction('action', this.getProperties('playerCount', 'boardSize', 'boardShape'));
