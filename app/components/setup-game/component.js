@@ -25,7 +25,7 @@ export default Ember.Component.extend({
 
     actions: {
         createGame() {
-            this.sendAction('action', this.getProperties('playerCount', 'boardSize', 'boardShape'));
+            this.sendAction('action', this.getProperties('playerCount', 'boardSize', 'boardShape', 'players'));
         }
     },
 
