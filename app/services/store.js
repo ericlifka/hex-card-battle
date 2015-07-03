@@ -17,6 +17,12 @@ export default Ember.Service.extend({
 
         const game = Game.create({id});
 
+        if (boardShape !== 'square') {
+            const message = "non square boards not yet supported :p";
+            console.error(message);
+            throw message;
+        }
+
         const rows = [];
         for (let height = size % 2 === 0 ? size + 1 : size,
                  i = 0; i < height; i++) {
