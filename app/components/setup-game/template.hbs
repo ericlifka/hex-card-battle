@@ -1,22 +1,30 @@
-<h3>setup-game-component</h3>
+<h3>Setup a new game</h3>
 
-{{dynamic-select
-    description="Number of players"
-    contents=playerCountOptions
-    selected=playerCount
-    action=(action (mut playerCount))}}
+<div class="section">
+    <div class="header">Board Setup</div>
 
-{{dynamic-select
-    description="Board Size"
-    contents=boardSizeOptions
-    selected=boardSize
-    action=(action (mut boardSize))}}
+    {{dynamic-select
+        description="Board Size"
+        contents=boardSizeOptions
+        selected=boardSize
+        action=(action (mut boardSize))}}
 
-{{dynamic-select
-    description="Board Shape"
-    contents=boardShapeOptions
-    selected=boardShape
-    action=(action (mut boardShape))}}
+    {{dynamic-select
+        description="Board Shape"
+        contents=boardShapeOptions
+        selected=boardShape
+        action=(action (mut boardShape))}}
+</div>
+
+<div class="section">
+    <div class="header">Player Setup</div>
+
+    {{dynamic-select
+        description="Number of players"
+        contents=playerCountOptions
+        selected=playerCount
+        action=(action (mut playerCount))}}
+</div>
 
 {{!dynamic-select
     description="Game Speed"
