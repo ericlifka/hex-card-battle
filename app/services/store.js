@@ -12,9 +12,7 @@ const sizes = {
 
 export default Ember.Service.extend({
     newGame({boardSize, boardShape, players}) {
-        const size = sizes[boardSize];
         const id = guid();
-
         const game = Game.create({id});
 
         if (boardShape !== 'square') {
@@ -22,8 +20,15 @@ export default Ember.Service.extend({
             console.error(message);
             throw message;
         }
+        game.set('board', this.generateSquareBoard(boardSize));
 
+        return game;
+    },
+
+    generateSquareBoard(boardSize) {
+        const size = sizes[boardSize];
         const rows = [];
+
         for (let height = size % 2 === 0 ? size + 1 : size,
                  i = 0; i < height; i++) {
 
@@ -39,11 +44,9 @@ export default Ember.Service.extend({
 
             rows.push(row);
         }
-        game.set('board', rows);
 
         this.setCubeCoords(rows);
-
-        return game;
+        return rows;
     },
 
     setCubeCoords(rows) {
