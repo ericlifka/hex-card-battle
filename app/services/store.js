@@ -12,20 +12,22 @@ const sizes = {
 
 export default Ember.Service.extend({
     newGame({boardSize, boardShape, players}) {
-        const game = Game.create({
+        return Game.create({
             id: guid(),
             players: players,
-            currentPlayer: 0
+            currentPlayer: 0,
+            board: this.generateBoard(boardSize, boardShape)
         });
+    },
 
-        if (boardShape !== 'square') {
+    generateBoard(size, shape) {
+        if (shape !== 'square') {
             const message = "non square boards not yet supported :p";
             console.error(message);
             throw message;
         }
-        game.set('board', this.generateSquareBoard(boardSize));
 
-        return game;
+        return this.generateSquareBoard(size);
     },
 
     generateSquareBoard(boardSize) {
