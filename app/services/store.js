@@ -11,7 +11,7 @@ const sizes = {
 };
 
 export default Ember.Service.extend({
-    newGame({playerCount, boardSize, boardShape, players}) {
+    newGame({boardSize, boardShape, players}) {
         const size = sizes[boardSize];
         const id = guid();
 
