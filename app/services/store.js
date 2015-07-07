@@ -14,9 +14,12 @@ export default Ember.Service.extend({
     lookupById(id) {
         return this.newGame({
             id,
-            boardSize: sizes.small,
+            boardSize: 'small',
             boardShape: 'square',
-            players: 2
+            players: [
+                {playerNumber: 1, name: 'player 1'},
+                {playerNumber: 2, name: 'player 2'}
+            ]
         });
     },
 
