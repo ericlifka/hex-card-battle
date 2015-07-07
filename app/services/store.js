@@ -11,6 +11,15 @@ const sizes = {
 };
 
 export default Ember.Service.extend({
+    lookupById(id) {
+        return this.newGame({
+            id,
+            boardSize: sizes.small,
+            boardShape: 'square',
+            players: 2
+        });
+    },
+
     newGame({boardSize, boardShape, players}) {
         return Game.create({
             id: guid(),
