@@ -66,6 +66,24 @@ export default Ember.Service.extend({
         return rows;
     },
 
+    emptyGrid(width, height) {
+        const type = 'empty';
+        const rows = [];
+
+        for (let h = 0; h < height; h++) {
+            const row = [];
+
+            for (let w = 0; w < width; w++) {
+                row.push(Ember.Object.create({type}));
+            }
+
+            rows.push(row);
+        }
+
+        this.setCubeCoords(rows);
+        return rows;
+    },
+
     setCubeCoords(rows) {
         for (let row = 0; row < rows.length; row++) {
             for (let col = 0; col < rows[row].length; col++) {
