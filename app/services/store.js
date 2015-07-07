@@ -43,12 +43,12 @@ export default Ember.Service.extend({
     },
 
     generateSquareBoard(boardSize) {
-        const size = sizes[boardSize];
+        const width = sizes[boardSize];
 
-        return this.emptyGrid(size, size, 'lake');
+        return this.emptyGrid({width, type: 'lake'});
     },
 
-    emptyGrid(width, height = width, type = 'empty') {
+    emptyGrid({width, height = width, type = 'empty'}) {
         const rows = [];
 
         for (let h = 0; h < height; h++) {
