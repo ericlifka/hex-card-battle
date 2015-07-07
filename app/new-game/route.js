@@ -5,7 +5,8 @@ export default Ember.Route.extend({
 
     actions: {
         createGame(description) {
-            console.log('route - createGame', description);
+            this.transitionTo('game',
+                this.get('store').newGame(description));
         }
     }
 });
