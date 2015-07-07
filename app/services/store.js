@@ -44,17 +44,11 @@ export default Ember.Service.extend({
 
     generateSquareBoard(boardSize) {
         const size = sizes[boardSize];
-        const rows =this.emptyGrid(size, size);
 
-        rows.forEach(row =>
-            row.forEach(hex =>
-                hex.set('type', 'lake')));
-
-        return rows;
+        return this.emptyGrid(size, size, 'lake');
     },
 
-    emptyGrid(width, height) {
-        const type = 'empty';
+    emptyGrid(width, height = width, type = 'empty') {
         const rows = [];
 
         for (let h = 0; h < height; h++) {
