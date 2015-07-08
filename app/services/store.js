@@ -31,12 +31,18 @@ export default Ember.Service.extend({
     },
 
     newGame({boardSize, boardShape, players}) {
-        return Game.create({
+        const game = Game.create({
             id: guid(),
             players: players,
             currentPlayer: 0,
             board: this.generateBoard(boardSize, boardShape)
         });
+
+        if (boardShape === 'random') {
+            this.eliminateIsolatedIslands(game);
+        }
+
+        return game;
     },
 
     generateBoard(size, shape) {
@@ -108,8 +114,6 @@ export default Ember.Service.extend({
             });
         });
 
-        this.eliminateIsolatedIslands(grid);
-
         return grid;
     },
 
@@ -138,7 +142,8 @@ export default Ember.Service.extend({
         }
     },
 
-    eliminateIsolatedIslands(grid) {
+    eliminateIsolatedIslands(game) {
+        const grid = game.board;
         const midPoint = Math.floor(grid.length / 2);
         const middle = grid[midPoint][midPoint];
         const queue = [middle];
