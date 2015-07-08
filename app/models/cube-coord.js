@@ -18,6 +18,16 @@ const CubeCoord = Ember.Object.extend({
             CubeCoord.fromCube(x+1, y, z-1),
             CubeCoord.fromCube(x-1, y, z+1)
         ];
+    },
+
+    distanceFrom(other) {
+        const dx = Math.abs(this.get('x') - other.get('x'));
+        const dy = Math.abs(this.get('y') - other.get('y'));
+        const dz = Math.abs(this.get('z') - other.get('z'));
+
+        const manhattanDistance = dx + dy + dz;
+
+        return manhattanDistance / 2;
     }
 });
 
