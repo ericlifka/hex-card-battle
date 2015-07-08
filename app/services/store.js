@@ -7,7 +7,12 @@ import guid from '../utils/guid';
 const sizes = {
     small: 10,
     medium: 20,
-    large: 40
+    large: 40,
+    hexagon: {
+        small: 6,
+        medium: 12,
+        large: 24
+    }
 };
 
 export default Ember.Service.extend({
@@ -55,7 +60,14 @@ export default Ember.Service.extend({
     },
 
     generateHexagonBoard(boardSize) {
-        throw "hexagon board not supported yet";
+        const width = 2 * sizes.hexagon[boardSize] - 1;
+        const midPoint = Math.floor(width / 2) - 1;
+
+        const grid = this.emptyGrid({width});
+        const middle = grid[midPoint][midPoint];
+        middle.set('type', 'forest');
+
+        return grid;
     },
 
     generateRandomBoard(boardSize) {
