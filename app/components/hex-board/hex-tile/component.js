@@ -9,6 +9,8 @@ export default Ember.Component.extend({
     hex: null,
 
     click() {
-        this.get('game').clickHex(this.get('hex'));
+        if (this.get('hex.type') !== 'empty') {
+            this.get('game').clickHex(this.get('hex'));
+        }
     }
 });
