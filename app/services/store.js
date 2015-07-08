@@ -22,7 +22,7 @@ export default Ember.Service.extend({
         return this.newGame({
             id,
             boardSize: 'small',
-            boardShape: 'hexagon',
+            boardShape: 'random',
             players: [
                 {playerNumber: 1, name: 'player 1'},
                 {playerNumber: 2, name: 'player 2'}
@@ -81,7 +81,16 @@ export default Ember.Service.extend({
     },
 
     generateRandomBoard(boardSize) {
-        throw "random board not supported yet";
+        const width = sizes.square[boardSize];
+        const grid = this.emptyGrid({width});
+
+        grid.forEach(row => {
+            row.forEach(hex => {
+                hex.set('type', 'forest');
+            });
+        });
+
+        return grid;
     },
 
     emptyGrid({width, height = width, type = 'empty'}) {
