@@ -33,19 +33,33 @@ export default Ember.Service.extend({
     },
 
     generateBoard(size, shape) {
-        if (shape !== 'square') {
-            const message = "non square boards not yet supported :p";
-            console.error(message);
-            throw message;
-        }
+        switch (shape) {
+            case 'square':
+                return this.generateSquareBoard(size);
 
-        return this.generateSquareBoard(size);
+            case 'hexagon':
+                return this.generateHexagonBoard(size);
+
+            case 'random':
+                return this.generateRandomBoard(size);
+
+            default:
+                throw `Unsupported board type '${shape}'`;
+        }
     },
 
     generateSquareBoard(boardSize) {
         const width = sizes[boardSize];
 
         return this.emptyGrid({width, type: 'lake'});
+    },
+
+    generateHexagonBoard(boardSize) {
+        throw "hexagon board not supported yet";
+    },
+
+    generateRandomBoard(boardSize) {
+        throw "random board not supported yet";
     },
 
     emptyGrid({width, height = width, type = 'empty'}) {
