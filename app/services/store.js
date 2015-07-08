@@ -21,7 +21,7 @@ export default Ember.Service.extend({
     lookupById(id) {
         return this.newGame({
             id,
-            boardSize: 'small',
+            boardSize: 'medium',
             boardShape: 'random',
             players: [
                 {playerNumber: 1, name: 'player 1'},
@@ -81,12 +81,20 @@ export default Ember.Service.extend({
     },
 
     generateRandomBoard(boardSize) {
+        const randInt = () => Math.floor(Math.random() * 10);
+
         const width = sizes.square[boardSize];
+        const midPoint = Math.floor(width / 2);
+
         const grid = this.emptyGrid({width});
+        const middle = grid[midPoint][midPoint].get('coord');
+        const max = middle.distanceFrom(grid[0][0].get('coord'));
 
         grid.forEach(row => {
             row.forEach(hex => {
-                if (Math.floor(Math.random() * 10) < 8) {
+                const distance = middle.distanceFrom(hex.get('coord'));
+                const weightOfMiddle = distance / max;
+                if (Math.random() > weightOfMiddle) {
                     hex.set('type', 'forest');
                 }
             });
