@@ -83,6 +83,7 @@ export default Ember.Service.extend({
     generateRandomBoard(boardSize) {
         const width = sizes.square[boardSize];
         const midPoint = Math.floor(width / 2);
+        const breakOverThreshold = midPoint * .75;
 
         const grid = this.emptyGrid({width, type: 'forest'});
         const middle = grid[midPoint][midPoint].get('coord');
@@ -92,8 +93,17 @@ export default Ember.Service.extend({
             row.forEach(hex => {
                 const distance = middle.distanceFrom(hex.get('coord'));
                 const weightOfMiddle = distance / max;
+
                 if (Math.random()*Math.random() > weightOfMiddle) {
                     hex.set('type', 'lake');
+                }
+
+                if (distance > breakOverThreshold) {
+                    const breakOverWeight = (distance - breakOverThreshold) / (max - breakOverThreshold);
+
+                    if (Math.random() < breakOverWeight) {
+                        hex.set('type', 'empty');
+                    }
                 }
             });
         });
