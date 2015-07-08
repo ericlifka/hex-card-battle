@@ -5,9 +5,11 @@ import CubeCoord from '../models/cube-coord';
 import guid from '../utils/guid';
 
 const sizes = {
-    small: 10,
-    medium: 20,
-    large: 40,
+    square: {
+        small: 10,
+        medium: 20,
+        large: 40
+    },
     hexagon: {
         small: 6,
         medium: 12,
@@ -54,7 +56,7 @@ export default Ember.Service.extend({
     },
 
     generateSquareBoard(boardSize) {
-        const width = sizes[boardSize];
+        const width = sizes.square[boardSize];
 
         return this.emptyGrid({width, type: 'lake'});
     },
