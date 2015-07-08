@@ -84,7 +84,7 @@ export default Ember.Service.extend({
         const width = sizes.square[boardSize];
         const midPoint = Math.floor(width / 2);
 
-        const grid = this.emptyGrid({width});
+        const grid = this.emptyGrid({width, type: 'forest'});
         const middle = grid[midPoint][midPoint].get('coord');
         const max = middle.distanceFrom(grid[0][0].get('coord'));
 
@@ -92,8 +92,8 @@ export default Ember.Service.extend({
             row.forEach(hex => {
                 const distance = middle.distanceFrom(hex.get('coord'));
                 const weightOfMiddle = distance / max;
-                if (Math.random() > weightOfMiddle) {
-                    hex.set('type', 'forest');
+                if (Math.random()*Math.random() > weightOfMiddle) {
+                    hex.set('type', 'lake');
                 }
             });
         });
