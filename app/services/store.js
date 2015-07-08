@@ -40,6 +40,7 @@ export default Ember.Service.extend({
 
         if (boardShape === 'random') {
             this.eliminateIsolatedIslands(game);
+            this.eliminateIsolatedEmptyZones(game);
         }
 
         return game;
@@ -168,6 +169,50 @@ export default Ember.Service.extend({
                 }
 
                 delete hex.mainland;
+            });
+        });
+    },
+
+    eliminateIsolatedEmptyZones(game) {
+        const grid = game.board;
+        const queue = [];
+
+        grid.get('firstObject').forEach(hex => {
+            hex.mainempty = true;
+            queue.push(hex);
+        });
+        grid.get('lastObject').forEach(hex => {
+            hex.mainempty = true;
+            queue.push(hex);
+        });
+        grid.forEach(row => {
+            const first = row.get('firstObject');
+            const last = row.get('lastObject');
+            first.mainempty = true;
+            last.mainempty = true;
+            queue.push(first);
+            queue.push(last);
+        });
+
+        while (queue.length > 0) {
+            const hex = queue.shift();
+
+            hex.coord.adjacentCoords().forEach(coord => {
+                const neighbor = game.lookupHex(coord);
+                if (neighbor && neighbor.type === 'empty' && !neighbor.mainempty) {
+                    neighbor.mainempty = true;
+                    queue.push(neighbor);
+                }
+            });
+        }
+
+        grid.forEach(row => {
+            row.forEach(hex => {
+                if (!hex.mainempty && hex.type === 'empty') {
+                    hex.set('type', 'lake');
+                }
+
+                delete hex.mainempty;
             });
         });
     }
