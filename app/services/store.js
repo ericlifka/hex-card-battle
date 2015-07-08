@@ -81,8 +81,6 @@ export default Ember.Service.extend({
     },
 
     generateRandomBoard(boardSize) {
-        const randInt = () => Math.floor(Math.random() * 10);
-
         const width = sizes.square[boardSize];
         const midPoint = Math.floor(width / 2);
 
