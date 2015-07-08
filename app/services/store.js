@@ -86,7 +86,9 @@ export default Ember.Service.extend({
 
         grid.forEach(row => {
             row.forEach(hex => {
-                hex.set('type', 'forest');
+                if (Math.floor(Math.random() * 10) < 8) {
+                    hex.set('type', 'forest');
+                }
             });
         });
 
