@@ -108,6 +108,8 @@ export default Ember.Service.extend({
             });
         });
 
+        this.eliminateIsolatedIslands(grid);
+
         return grid;
     },
 
@@ -134,5 +136,17 @@ export default Ember.Service.extend({
                 Ember.set(rows[row][col], 'coord', CubeCoord.fromRowCol(row, col));
             }
         }
+    },
+
+    eliminateIsolatedIslands(grid) {
+        const midPoint = Math.floor(grid.length / 2);
+        const middle = grid[midPoint][midPoint];
+        const queue = [middle];
+        middle.mainland = true;
+
+        const processQueue = function () {
+            const next = queue.unshift();
+            // find neighbors and continue;
+        };
     }
 });
