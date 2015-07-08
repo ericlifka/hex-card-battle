@@ -176,22 +176,18 @@ export default Ember.Service.extend({
     eliminateIsolatedEmptyZones(game) {
         const grid = game.board;
         const queue = [];
+        const hexChecker = hex => {
+            if (hex.type === 'empty' && !hex.mainempty) {
+                hex.mainempty = true;
+                queue.push(hex);
+            }
+        };
 
-        grid.get('firstObject').forEach(hex => {
-            hex.mainempty = true;
-            queue.push(hex);
-        });
-        grid.get('lastObject').forEach(hex => {
-            hex.mainempty = true;
-            queue.push(hex);
-        });
+        grid.get('firstObject').forEach(hexChecker);
+        grid.get('lastObject').forEach(hexChecker);
         grid.forEach(row => {
-            const first = row.get('firstObject');
-            const last = row.get('lastObject');
-            first.mainempty = true;
-            last.mainempty = true;
-            queue.push(first);
-            queue.push(last);
+            hexChecker(row.get('firstObject'));
+            hexChecker(row.get('lastObject'));
         });
 
         while (queue.length > 0) {
