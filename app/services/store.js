@@ -100,7 +100,7 @@ export default Ember.Service.extend({
                 const distance = middle.distanceFrom(hex.get('coord'));
                 const weightOfMiddle = distance / max;
 
-                if (Math.random()*Math.random() > weightOfMiddle) {
+                if (Math.random() * Math.random() > weightOfMiddle) {
                     hex.set('type', 'lake');
                 }
 
@@ -149,9 +149,26 @@ export default Ember.Service.extend({
         const queue = [middle];
         middle.mainland = true;
 
-        const processQueue = function () {
-            const next = queue.unshift();
-            // find neighbors and continue;
-        };
+        while (queue.length > 0) {
+            const hex = queue.shift();
+
+            hex.coord.adjacentCoords().forEach(coord => {
+                const neighbor = game.lookupHex(coord);
+                if (neighbor && neighbor.type !== 'empty' && !neighbor.mainland) {
+                    neighbor.mainland = true;
+                    queue.push(neighbor);
+                }
+            });
+        }
+
+        grid.forEach(row => {
+            row.forEach(hex => {
+                if (!hex.mainland) {
+                    hex.set('type', 'empty');
+                }
+
+                delete hex.mainland;
+            });
+        });
     }
 });
