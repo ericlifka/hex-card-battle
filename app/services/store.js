@@ -177,7 +177,7 @@ export default Ember.Service.extend({
         const grid = game.board;
         const queue = [];
         const hexChecker = hex => {
-            if (hex.type === 'empty' && !hex.mainempty) {
+            if (hex && hex.type === 'empty' && !hex.mainempty) {
                 hex.mainempty = true;
                 queue.push(hex);
             }
@@ -194,11 +194,7 @@ export default Ember.Service.extend({
             const hex = queue.shift();
 
             hex.coord.adjacentCoords().forEach(coord => {
-                const neighbor = game.lookupHex(coord);
-                if (neighbor && neighbor.type === 'empty' && !neighbor.mainempty) {
-                    neighbor.mainempty = true;
-                    queue.push(neighbor);
-                }
+                hexChecker(game.lookupHex(coord));
             });
         }
 
