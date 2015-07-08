@@ -22,7 +22,7 @@ export default Ember.Service.extend({
         return this.newGame({
             id,
             boardSize: 'small',
-            boardShape: 'square',
+            boardShape: 'hexagon',
             players: [
                 {playerNumber: 1, name: 'player 1'},
                 {playerNumber: 2, name: 'player 2'}
@@ -64,7 +64,7 @@ export default Ember.Service.extend({
     generateHexagonBoard(boardSize) {
         const size = sizes.hexagon[boardSize];
         const width = 2 * size - 1;
-        const midPoint = Math.floor(width / 2) - 1;
+        const midPoint = Math.floor(width / 2);
 
         const grid = this.emptyGrid({width});
         const middle = grid[midPoint][midPoint].get('coord');
@@ -76,8 +76,6 @@ export default Ember.Service.extend({
                 }
             });
         });
-
-        grid[midPoint][midPoint].set('type', 'lake');
 
         return grid;
     },
