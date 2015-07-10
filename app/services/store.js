@@ -90,7 +90,7 @@ export default Ember.Service.extend({
     generateRandomBoard(boardSize) {
         const width = sizes.square[boardSize];
         const midPoint = Math.floor(width / 2);
-        const breakOverThreshold = midPoint * .75;
+        const breakOverThreshold = midPoint * 0.75;
 
         const grid = this.emptyGrid({width, type: 'forest'});
         const middle = grid[midPoint][midPoint].get('coord');
@@ -118,7 +118,7 @@ export default Ember.Service.extend({
         return grid;
     },
 
-    emptyGrid({width, height = width, type = 'empty'}) {
+    emptyGrid({width, height = width, type = 'empty'}) { // jshint ignore:line
         const rows = [];
 
         for (let h = 0; h < height; h++) {
