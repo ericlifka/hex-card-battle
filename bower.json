@@ -10,6 +10,7 @@
     "ember-resolver": "~0.1.15",
     "jquery": "^2.x.x",
     "loader.js": "ember-cli/loader.js#3.2.0",
-    "qunit": "~1.17.1"
+    "qunit": "~1.17.1",
+    "ionicons": "~2.0.1"
   }
 }
