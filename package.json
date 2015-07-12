@@ -1,7 +1,7 @@
 {
   "name": "hex-card-battle",
-  "version": "0.0.0",
-  "description": "Small description for hex-card-battle goes here",
+  "version": "0.1.0",
+  "description": "An app for designing a hex grid based deck building board game",
   "private": true,
   "directories": {
     "doc": "doc",
@@ -12,11 +12,11 @@
     "build": "ember build",
     "test": "ember test"
   },
-  "repository": "",
+  "repository": "https://github.com/ericlifka/hex-card-battle.git",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Eric Lifka",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
