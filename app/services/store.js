@@ -65,7 +65,7 @@ export default Ember.Service.extend({
     generateSquareBoard(boardSize) {
         const width = sizes.square[boardSize];
 
-        return this.emptyGrid({width, type: 'lake'});
+        return this.emptyGrid({width, type: 'normal'});
     },
 
     generateHexagonBoard(boardSize) {
