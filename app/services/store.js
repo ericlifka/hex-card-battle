@@ -99,11 +99,6 @@ export default Ember.Service.extend({
         grid.forEach(row => {
             row.forEach(hex => {
                 const distance = middle.distanceFrom(hex.get('coord'));
-                const weightOfMiddle = distance / max;
-
-                if (Math.random() * Math.random() > weightOfMiddle) {
-                    hex.set('type', 'lake');
-                }
 
                 if (distance > breakOverThreshold) {
                     const breakOverWeight = (distance - breakOverThreshold) / (max - breakOverThreshold);
