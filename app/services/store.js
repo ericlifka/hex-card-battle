@@ -66,7 +66,7 @@ export default Ember.Service.extend({
         });
     },
 
-    generateHexagonBoard(board, type) {
+    fillHexBoard(board, type) {
         const width = board[0].length;
         const size = (width + 1) / 2;
         const midPoint = Math.floor(width / 2);
