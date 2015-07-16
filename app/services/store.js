@@ -40,18 +40,26 @@ export default Ember.Service.extend({
             board: this.emptyGrid({width})
         });
 
-        if (boardShape === 'random') {
-            this.eliminateIsolatedIslands(game);
-            this.eliminateIsolatedEmptyZones(game);
-        }
+        this.postProcessBoard(game, boardShape);
 
         return game;
     },
 
-    generateSquareBoard(boardSize) {
-        const width = sizes.square[boardSize];
+    postProcessBoard(game, shape) {
+        if (shape === 'square') {
+            this.fillBoard(game.get('board'), 'forest');
+        }
 
-        return this.emptyGrid({width, type: 'normal'});
+        if (shape === 'random') {
+            this.eliminateIsolatedIslands(game);
+            this.eliminateIsolatedEmptyZones(game);
+        }
+    },
+
+    fillBoard(board, type) {
+        board.forEach(row => {
+            row.forEach(hex => hex.set('type', type));
+        });
     },
 
     generateHexagonBoard(boardSize) {
