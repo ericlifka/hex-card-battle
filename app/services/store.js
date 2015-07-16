@@ -14,6 +14,11 @@ const sizes = {
         small: 11,
         medium: 23,
         large: 47
+    },
+    random: {
+        small: 10,
+        medium: 20,
+        large: 40
     }
 };
 
@@ -55,6 +60,7 @@ export default Ember.Service.extend({
         }
 
         if (shape === 'random') {
+            this.fillRandomBoard(game.get('board'));
             this.eliminateIsolatedIslands(game);
             this.eliminateIsolatedEmptyZones(game);
         }
@@ -82,17 +88,18 @@ export default Ember.Service.extend({
         });
     },
 
-    generateRandomBoard(boardSize) {
-        const width = sizes.square[boardSize];
+    fillRandomBoard(board) {
+        const width = board[0].length;
         const midPoint = Math.floor(width / 2);
         const breakOverThreshold = midPoint * 0.75;
 
-        const grid = this.emptyGrid({width, type: 'forest'});
-        const middle = grid[midPoint][midPoint].get('coord');
-        const max = middle.distanceFrom(grid[0][0].get('coord'));
+        const middle = board[midPoint][midPoint].get('coord');
+        const max = middle.distanceFrom(board[0][0].get('coord'));
 
-        grid.forEach(row => {
+        board.forEach(row => {
             row.forEach(hex => {
+                hex.set('type', 'forest');
+
                 const distance = middle.distanceFrom(hex.get('coord'));
 
                 if (distance > breakOverThreshold) {
@@ -104,8 +111,6 @@ export default Ember.Service.extend({
                 }
             });
         });
-
-        return grid;
     },
 
     emptyGrid({width, height = width, type = 'empty'}) { // jshint ignore:line
