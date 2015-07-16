@@ -11,9 +11,9 @@ const sizes = {
         large: 40
     },
     hexagon: {
-        small: 6,
-        medium: 12,
-        large: 24
+        small: 11,
+        medium: 23,
+        large: 47
     }
 };
 
@@ -50,6 +50,10 @@ export default Ember.Service.extend({
             this.fillBoard(game.get('board'), 'forest');
         }
 
+        if (shape === 'hexagon') {
+            this.fillHexBoard(game.get('board'), 'forest');
+        }
+
         if (shape === 'random') {
             this.eliminateIsolatedIslands(game);
             this.eliminateIsolatedEmptyZones(game);
@@ -62,23 +66,20 @@ export default Ember.Service.extend({
         });
     },
 
-    generateHexagonBoard(boardSize) {
-        const size = sizes.hexagon[boardSize];
-        const width = 2 * size - 1;
+    generateHexagonBoard(board, type) {
+        const width = board[0].length;
+        const size = (width + 1) / 2;
         const midPoint = Math.floor(width / 2);
 
-        const grid = this.emptyGrid({width});
-        const middle = grid[midPoint][midPoint].get('coord');
+        const middle = board[midPoint][midPoint].get('coord');
 
-        grid.forEach(row => {
+        board.forEach(row => {
             row.forEach(hex => {
                 if (middle.distanceFrom(hex.get('coord')) < size) {
-                    hex.set('type', 'forest');
+                    hex.set('type', type);
                 }
             });
         });
-
-        return grid;
     },
 
     generateRandomBoard(boardSize) {
