@@ -67,9 +67,9 @@ export default Ember.Service.extend({
     },
 
     fillBoard(board, type) {
-        board.forEach(row => {
-            row.forEach(hex => hex.set('type', type));
-        });
+        board.forEach(row => row.forEach(hex => {
+            hex.set('type', type)
+        }));
     },
 
     fillHexBoard(board, type) {
@@ -79,13 +79,11 @@ export default Ember.Service.extend({
 
         const middle = board[midPoint][midPoint].get('coord');
 
-        board.forEach(row => {
-            row.forEach(hex => {
-                if (middle.distanceFrom(hex.get('coord')) < size) {
-                    hex.set('type', type);
-                }
-            });
-        });
+        board.forEach(row => row.forEach(hex => {
+            if (middle.distanceFrom(hex.get('coord')) < size) {
+                hex.set('type', type);
+            }
+        }));
     },
 
     fillRandomBoard(board) {
@@ -96,21 +94,19 @@ export default Ember.Service.extend({
         const middle = board[midPoint][midPoint].get('coord');
         const max = middle.distanceFrom(board[0][0].get('coord'));
 
-        board.forEach(row => {
-            row.forEach(hex => {
-                hex.set('type', 'forest');
+        board.forEach(row => row.forEach(hex => {
+            hex.set('type', 'forest');
 
-                const distance = middle.distanceFrom(hex.get('coord'));
+            const distance = middle.distanceFrom(hex.get('coord'));
 
-                if (distance > breakOverThreshold) {
-                    const breakOverWeight = (distance - breakOverThreshold) / (max - breakOverThreshold);
+            if (distance > breakOverThreshold) {
+                const breakOverWeight = (distance - breakOverThreshold) / (max - breakOverThreshold);
 
-                    if (Math.random() < breakOverWeight) {
-                        hex.set('type', 'empty');
-                    }
+                if (Math.random() < breakOverWeight) {
+                    hex.set('type', 'empty');
                 }
-            });
-        });
+            }
+        }));
     },
 
     emptyGrid({width, height = width, type = 'empty'}) { // jshint ignore:line
