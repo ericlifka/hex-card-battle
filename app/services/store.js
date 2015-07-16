@@ -31,11 +31,13 @@ export default Ember.Service.extend({
     },
 
     newGame({boardSize, boardShape, players}) {
+        const width = sizes[boardShape][boardSize] || 10;
+
         const game = Game.create({
             id: guid(),
             players: players,
             currentPlayer: 0,
-            board: this.generateBoard(boardSize, boardShape)
+            board: this.emptyGrid({width})
         });
 
         if (boardShape === 'random') {
@@ -44,22 +46,6 @@ export default Ember.Service.extend({
         }
 
         return game;
-    },
-
-    generateBoard(size, shape) {
-        switch (shape) {
-            case 'square':
-                return this.generateSquareBoard(size);
-
-            case 'hexagon':
-                return this.generateHexagonBoard(size);
-
-            case 'random':
-                return this.generateRandomBoard(size);
-
-            default:
-                throw `Unsupported board type '${shape}'`;
-        }
     },
 
     generateSquareBoard(boardSize) {
