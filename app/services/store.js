@@ -210,7 +210,9 @@ export default Ember.Service.extend({
         lakeSeed.probability = 1;
         queue.push(lakeSeed);
 
-        const hexChecker = hex => {
+        while (queue.length > 0) {
+            const hex = queue.shift();
+
             if (rand.bool(hex.probability)) {
                 hex.set('type', 'lake');
                 const propagationProbability = hex.probability - stepDown;
@@ -226,10 +228,6 @@ export default Ember.Service.extend({
                     });
                 }
             }
-        };
-
-        while (queue.length > 0) {
-            hexChecker(queue.shift());
         }
 
         game.board.forEach(row => row.forEach(hex => {
