@@ -203,17 +203,13 @@ export default Ember.Service.extend({
     },
 
     randomizeLake(game) {
-        const size = game.board.length;
-        let stepDown;
-        if (size >= 40) {
-            stepDown = 0.05;
-        } else if (size >= 20) {
-            stepDown = 0.1;
-        } else {
-            stepDown = 0.2;
-        }
-
         const queue = [];
+        const stepDown = this.probabilityStepDown(game);
+        const lakeSeed = this.getRandomCentralHex(game);
+
+        lakeSeed.probability = 1;
+        queue.push(lakeSeed);
+
         const hexChecker = hex => {
             if (rand.bool(hex.probability)) {
                 hex.set('type', 'lake');
@@ -231,10 +227,6 @@ export default Ember.Service.extend({
                 }
             }
         };
-
-        const lakeSeed = this.getRandomCentralHex(game);
-        lakeSeed.probability = 1;
-        queue.push(lakeSeed);
 
         while (queue.length > 0) {
             hexChecker(queue.shift());
@@ -258,5 +250,17 @@ export default Ember.Service.extend({
         const yRand = rand.range(minRange, maxRange);
 
         return board[xRand][yRand];
+    },
+
+    probabilityStepDown({board}) {
+        const size = board.length;
+
+        if (size >= 40) {
+            return 0.05;
+        } else if (size >= 20) {
+            return 0.1;
+        } else {
+            return 0.2;
+        }
     }
 });
