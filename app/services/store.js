@@ -3,6 +3,7 @@ import Ember from 'ember';
 import Game from '../models/game';
 import CubeCoord from '../models/cube-coord';
 import guid from '../utils/guid';
+import rand from '../utils/rand';
 
 const sizes = {
     square: {
@@ -209,8 +210,8 @@ export default Ember.Service.extend({
         const range = Math.floor(size / 6);
         const minRange = midPoint - range;
         const maxRange = midPoint + range;
-        const xRand = Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
-        const yRand = Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
+        const xRand = rand.range(minRange, maxRange);
+        const yRand = rand.range(minRange, maxRange);
         const lakeSeed = grid[xRand][yRand];
 
         lakeSeed.set('type', 'lake');
