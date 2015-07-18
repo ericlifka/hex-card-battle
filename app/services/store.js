@@ -214,13 +214,35 @@ export default Ember.Service.extend({
         const yRand = rand.range(minRange, maxRange);
         const lakeSeed = grid[xRand][yRand];
 
-        lakeSeed.set('type', 'lake');
-
+        const stepDown = 0.1;
         const queue = [];
         const hexChecker = hex => {
-            // todo
+            if (rand.bool(hex.probability)) {
+                hex.set('type', 'lake');
+                const propagationProbability = hex.probability - stepDown;
+
+                if (propagationProbability > 0) {
+                    hex.coord.adjacentCoords().forEach(coord => {
+                        const adjacentHex = game.lookupHex(coord);
+
+                        if (adjacentHex && adjacentHex.type !== 'empty' && !adjacentHex.probability) {
+                            adjacentHex.probability = propagationProbability;
+                            queue.push(adjacentHex);
+                        }
+                    });
+                }
+            }
+        };
+
+        lakeSeed.probability = 1;
+        queue.push(lakeSeed);
+
+        while (queue.length > 0) {
+            hexChecker(queue.shift());
         }
 
-
+        grid.forEach(row => row.forEach(hex => {
+            delete hex.probability;
+        }));
     }
 });
