@@ -203,16 +203,7 @@ export default Ember.Service.extend({
     },
 
     randomizeLake(game) {
-        const grid = game.board;
-
-        const size = grid.length;
-        const midPoint = Math.floor(size / 2);
-        const range = Math.floor(size / 6);
-        const minRange = midPoint - range;
-        const maxRange = midPoint + range;
-        const xRand = rand.range(minRange, maxRange);
-        const yRand = rand.range(minRange, maxRange);
-        const lakeSeed = grid[xRand][yRand];
+        const lakeSeed = this.getRandomCentralHex(game);
 
         const stepDown = 0.1;
         const queue = [];
@@ -241,8 +232,23 @@ export default Ember.Service.extend({
             hexChecker(queue.shift());
         }
 
-        grid.forEach(row => row.forEach(hex => {
+        game.board.forEach(row => row.forEach(hex => {
             delete hex.probability;
         }));
+    },
+
+    getRandomCentralHex({board}) {
+        const size = board.length;
+
+        const midPoint = Math.floor(size / 2);
+        const range = Math.floor(size / 6);
+
+        const minRange = midPoint - range;
+        const maxRange = midPoint + range;
+
+        const xRand = rand.range(minRange, maxRange);
+        const yRand = rand.range(minRange, maxRange);
+
+        return board[xRand][yRand];
     }
 });
