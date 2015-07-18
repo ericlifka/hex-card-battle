@@ -203,9 +203,16 @@ export default Ember.Service.extend({
     },
 
     randomizeLake(game) {
-        const lakeSeed = this.getRandomCentralHex(game);
+        const size = game.board.length;
+        let stepDown;
+        if (size >= 40) {
+            stepDown = 0.05;
+        } else if (size >= 20) {
+            stepDown = 0.1;
+        } else {
+            stepDown = 0.2;
+        }
 
-        const stepDown = 0.1;
         const queue = [];
         const hexChecker = hex => {
             if (rand.bool(hex.probability)) {
@@ -225,6 +232,7 @@ export default Ember.Service.extend({
             }
         };
 
+        const lakeSeed = this.getRandomCentralHex(game);
         lakeSeed.probability = 1;
         queue.push(lakeSeed);
 
