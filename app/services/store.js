@@ -63,6 +63,7 @@ export default Ember.Service.extend({
             this.fillRandomBoard(game.get('board'));
             this.eliminateIsolatedIslands(game);
             this.eliminateIsolatedEmptyZones(game);
+            this.randomizeLake(game);
         }
     },
 
@@ -198,5 +199,27 @@ export default Ember.Service.extend({
                 delete hex.mainempty;
             });
         });
+    },
+
+    randomizeLake(game) {
+        const grid = game.board;
+
+        const size = grid.length;
+        const midPoint = Math.floor(size / 2);
+        const range = Math.floor(size / 6);
+        const minRange = midPoint - range;
+        const maxRange = midPoint + range;
+        const xRand = Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
+        const yRand = Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
+        const lakeSeed = grid[xRand][yRand];
+
+        lakeSeed.set('type', 'lake');
+
+        const queue = [];
+        const hexChecker = hex => {
+            // todo
+        }
+
+
     }
 });
