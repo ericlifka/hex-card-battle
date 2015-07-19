@@ -65,6 +65,7 @@ export default Ember.Service.extend({
             this.eliminateIsolatedIslands(game);
             this.eliminateIsolatedEmptyZones(game);
             this.randomizeLake(game);
+            this.addCrystalNodes(game);
         }
     },
 
@@ -260,5 +261,28 @@ export default Ember.Service.extend({
         } else {
             return 0.2;
         }
+    },
+
+    addCrystalNodes(game) {
+        const getNeighbors = hex => hex.coord.adjacentCoords().map(coord => game.lookupHex(coord));
+        const countNeighbors = (neighbors, type) => {
+            let count = 0;
+            neighbors.forEach(hex => {
+                if (hex && hex.get('type') === type) {
+                    count++;
+                }
+            });
+            return count;
+        };
+
+        game.board.forEach(row => row.forEach(hex => {
+            const neighbors = getNeighbors(hex);
+            if (hex.type === 'forest' &&
+                countNeighbors(neighbors, 'forest') <= 1 &&
+                countNeighbors(neighbors, 'crystal') === 0) {
+
+                hex.set('type', 'crystal');
+            }
+        }));
     }
 });
