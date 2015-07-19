@@ -94,7 +94,7 @@
   }
 
   &.empty {
-    .tile-type(#fff,#fff,#fff,#fff);
+    .tile-type(#fff, #fff, #fff, #fff);
     cursor: default;
   }
 
@@ -103,34 +103,15 @@
   @active-color: #f4f4f4;
   @secondary-color: #e7e7e7;
   &.normal {
-    .tile-type(
-    @normal-color,
-    @hover-color,
-    @active-color,
-    @secondary-color);
+    .tile-type(@normal-color, @hover-color, @active-color, @secondary-color);
   }
   &.forest {
-    .tile-type(
-    rgb(189, 210, 189),
-    #fff,
-    rgb(241, 252, 241),
-    rgb(210, 241, 210)
-    );
+    .tile-type(rgb(189, 210, 189), #fff, rgb(241, 252, 241), rgb(210, 241, 210));
   }
   &.lake {
-    .tile-type(
-    #b6b9f4,
-    #fff,
-    #ede9ff,
-    #d9d8f2
-    );
+    .tile-type(#b6b9f4, #fff, #ede9ff, #d9d8f2);
   }
   &.crystal {
-    .tile-type(
-    #800080,
-    #fff,
-    #ff00ff,
-    #b800b8
-    );
+    .tile-type(#800080, #fff, #ff00ff, #b800b8);
   }
 }
