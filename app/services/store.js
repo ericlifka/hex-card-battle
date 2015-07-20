@@ -65,7 +65,7 @@ export default Ember.Service.extend({
             this.eliminateIsolatedIslands(game);
             this.eliminateIsolatedEmptyZones(game);
             this.randomizeLake(game);
-            this.addCrystalNodes(game);
+            this.addPrimaryResourceNodes(game);
         }
     },
 
@@ -263,26 +263,33 @@ export default Ember.Service.extend({
         }
     },
 
-    addCrystalNodes(game) {
-        const getNeighbors = hex => hex.coord.adjacentCoords().map(coord => game.lookupHex(coord));
-        const countNeighbors = (neighbors, type) => {
-            let count = 0;
-            neighbors.forEach(hex => {
-                if (hex && hex.get('type') === type) {
-                    count++;
-                }
-            });
-            return count;
-        };
-
+    addPrimaryResourceNodes(game) {
         game.board.forEach(row => row.forEach(hex => {
-            const neighbors = getNeighbors(hex);
+            const neighbors = this.getNeighbors(hex, game);
             if (hex.type === 'forest' &&
-                countNeighbors(neighbors, 'forest') <= 1 &&
-                countNeighbors(neighbors, 'crystal') === 0) {
+                this.countNeighbors(neighbors, 'forest') <= 1 &&
+                this.countNeighbors(neighbors, 'resource-primary') === 0) {
 
-                hex.set('type', 'crystal');
+                hex.set('type', 'resource-primary');
             }
         }));
+    },
+
+    addSecondaryResourceNodes(game) {
+
+    },
+
+    getNeighbors(hex, game) {
+        return hex.coord.adjacentCoords().map(coord => game.lookupHex(coord));
+    },
+
+    countNeighbors(neighbors, type) {
+        let count = 0;
+        neighbors.forEach(hex => {
+            if (hex && hex.get('type') === type) {
+                count++;
+            }
+        });
+        return count;
     }
 });
