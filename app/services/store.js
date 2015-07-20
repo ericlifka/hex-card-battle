@@ -66,6 +66,7 @@ export default Ember.Service.extend({
             this.eliminateIsolatedEmptyZones(game);
             this.randomizeLake(game);
             this.addPrimaryResourceNodes(game);
+            this.addSecondaryResourceNodes(game);
         }
     },
 
@@ -276,7 +277,16 @@ export default Ember.Service.extend({
     },
 
     addSecondaryResourceNodes(game) {
+        game.board.forEach(row => row.forEach(hex => {
+            const neighbors = this.getNeighbors(hex, game);
+            const forest = this.countNeighbors(neighbors, 'forest');
+            const primary = this.countNeighbors(neighbors, 'resource-primary');
+            const secondary = this.countNeighbors(neighbors, 'resource-secondary');
 
+            if (hex.type === 'forest' && primary === 0 && secondary === 0 && forest <= 2) {
+                hex.set('type', 'resource-secondary');
+            }
+        }));
     },
 
     getNeighbors(hex, game) {
