@@ -71,7 +71,7 @@ export default Ember.Service.extend({
 
     fillBoard(board, type) {
         board.forEach(row => row.forEach(hex => {
-            hex.set('type', type)
+            hex.set('type', type);
         }));
     },
 
