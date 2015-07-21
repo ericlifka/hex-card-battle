@@ -1,12 +1,12 @@
 import Ember from 'ember';
 
 const ZOOM_MIN = 0;
-const ZOOM_MAX = 6;
+const ZOOM_MAX = 4;
 
 export default Ember.Component.extend({
     classNames: ['game-board'],
 
-    zoom: 2,
+    zoom: 1,
 
     actions: {
         zoomIn() {
