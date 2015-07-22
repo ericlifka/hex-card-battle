@@ -4,7 +4,7 @@ const ZOOM_MIN = 0;
 const ZOOM_MAX = 4;
 
 export default Ember.Component.extend({
-    classNameBindings: [':hex-board', 'zoomClass'],
+    classNameBindings: [':hex-board'],
 
     game: null,
     zoom: 1,

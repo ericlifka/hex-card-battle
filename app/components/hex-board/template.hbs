@@ -3,12 +3,14 @@
     zoomOut=(action 'zoomOut')}}
 
 
-{{#each game.board as |row|}}
-    <div class="row">
+<div class="rows {{zoomClass}}">
+    {{#each game.board as |row|}}
 
-        {{#each row as |hex|}}
-            {{hex-board.hex-tile hex=hex game=game}}
-        {{/each}}
+        <div class="row">
+            {{#each row as |hex|}}
+                {{hex-board.hex-tile hex=hex game=game}}
+            {{/each}}
+        </div>
 
-    </div>
-{{/each}}
+    {{/each}}
+</div>
