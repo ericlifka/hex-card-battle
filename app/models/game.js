@@ -1,11 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Object.extend({
+    /* Public Properties API */
     id: null,
     board: null,
-
     activeHex: null,
 
+    /* Public Function API */
     clickHex(hex) {
         const active = this.get('activeHex');
         if (active !== hex) {
@@ -17,6 +18,7 @@ export default Ember.Object.extend({
             this.set('activeHex', null);
         }
     },
+
 
     activateHex(hex) {
         if (hex) {
