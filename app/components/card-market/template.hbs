@@ -4,7 +4,9 @@
 
 <div class="panel-label">
     <button class="icon">
-        <span class="{{if expanded 'ion-arrow-shrink' 'ion-arrow-expand'}}"></span>
+        <span class="{{if expanded 'ion-arrow-shrink' 'ion-arrow-expand'}}"
+            {{action "togglePanelState"}}>
+        </span>
     </button>
     <span class="label">Card market</span>
 </div>
