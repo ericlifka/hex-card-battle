@@ -1,10 +1,24 @@
 import Ember from 'ember';
+import Card from './card';
 
 export default Ember.Object.extend({
     /* Public Properties API */
     id: null,
     board: null,
     activeHex: null,
+    cardMarketCards: Ember.computed(function () {
+        // temporary data shim until the deck management part of the game gets built
+        const name = 'Mana Well';
+        const art = '';
+
+        return [
+            Card.create({name, art}),
+            Card.create({name, art}),
+            Card.create({name, art}),
+            Card.create({name, art}),
+            Card.create({name, art})
+        ];
+    }),
 
     /* Public Function API */
     clickHex(hex) {
