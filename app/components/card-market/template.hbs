@@ -1,5 +1,7 @@
 {{#if expanded}}
-
+    {{#each cards as |card|}}
+        {{interactive-card card=card}}
+    {{/each}}
 {{/if}}
 
 <div class="panel-label">
