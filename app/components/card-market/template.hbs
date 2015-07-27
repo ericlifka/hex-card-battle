@@ -5,10 +5,8 @@
 {{/if}}
 
 <div class="panel-label">
-    <button class="icon">
-        <span class="{{if expanded 'ion-arrow-shrink' 'ion-arrow-expand'}}"
-            {{action "togglePanelState"}}>
-        </span>
+    <button class="icon" {{action "togglePanelState"}}>
+        <span class="{{if expanded 'ion-arrow-shrink' 'ion-arrow-expand'}}"></span>
     </button>
     <span class="label">Card market</span>
 </div>
