@@ -1,7 +1,9 @@
 {{#if expanded}}
-    {{#each cards as |card|}}
-        {{interactive-card card=card}}
-    {{/each}}
+    <div class="card-row">
+        {{#each cards as |card|}}
+            {{interactive-card card=card}}
+        {{/each}}
+    </div>
 {{/if}}
 
 <div class="panel-label">
