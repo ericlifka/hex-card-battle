@@ -29,18 +29,18 @@ export default Ember.Component.extend({
         }
     },
 
-    playerDescription(playerNumber) {
+    playerDescription(number) {
         if (!this._playerCache) {
             this._playerCache = {};
         }
 
-        if (!this._playerCache.hasOwnProperty(playerNumber)) {
-            this._playerCache[playerNumber] = Ember.Object.create({
-                playerNumber,
-                name: `player ${playerNumber}`
+        if (!this._playerCache.hasOwnProperty(number)) {
+            this._playerCache[number] = Ember.Object.create({
+                number,
+                name: `player ${number}`
             });
         }
 
-        return this._playerCache[playerNumber];
+        return this._playerCache[number];
     }
 });
