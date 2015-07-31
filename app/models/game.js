@@ -8,8 +8,8 @@ export default Ember.Object.extend({
     activeHex: null,
     cardMarketCards: Ember.computed(function () {
         // temporary data shim until the deck management part of the game gets built
-        const name = 'Mana Well';
-        const art = '';
+        const name = 'Energy Well';
+        const art = '/art/energy-well.jpg';
 
         return [
             Card.create({name, art}),
