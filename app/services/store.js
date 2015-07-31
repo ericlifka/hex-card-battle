@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
-import Game from '../models/game';
 import CubeCoord from '../models/cube-coord';
+import Game from '../models/game';
+import Player from '../models/player';
+
 import guid from '../utils/guid';
 import rand from '../utils/rand';
 
@@ -30,8 +32,8 @@ export default Ember.Service.extend({
             boardSize: 'medium',
             boardShape: 'random',
             players: [
-                {playerNumber: 1, name: 'player 1'},
-                {playerNumber: 2, name: 'player 2'}
+                Player.create({number: 1, name: 'player 1'}),
+                Player.create({number: 2, name: 'player 2'})
             ]
         });
     },
