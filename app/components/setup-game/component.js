@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+import Player from '../../models/player';
+
 export default Ember.Component.extend({
     classNames: ['setup-game-component'],
 
@@ -35,7 +37,7 @@ export default Ember.Component.extend({
         }
 
         if (!this._playerCache.hasOwnProperty(number)) {
-            this._playerCache[number] = Ember.Object.create({
+            this._playerCache[number] = Player.create({
                 number,
                 name: `player ${number}`
             });

@@ -43,7 +43,7 @@ export default Ember.Service.extend({
 
         const game = Game.create({
             id: guid(),
-            players: players.map(player => Player.create(player)),
+            players: players,
             currentPlayer: 0,
             board: this.emptyGrid({width})
         });
