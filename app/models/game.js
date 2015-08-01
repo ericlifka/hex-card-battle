@@ -38,7 +38,7 @@ export default Ember.Object.extend({
         if (hex) {
             hex.set('state', 'active');
             hex.coord.adjacentCoords().forEach(coord => {
-                const adjacentHex = this.lookupHex(coord);
+                const adjacentHex = this.board.lookupHex(coord);
                 if (adjacentHex) {
                     adjacentHex.set('state', 'secondary');
                 }
@@ -50,7 +50,7 @@ export default Ember.Object.extend({
         if (hex) {
             hex.set('state', null);
             hex.coord.adjacentCoords().forEach(coord => {
-                const adjacentHex = this.lookupHex(coord);
+                const adjacentHex = this.board.lookupHex(coord);
                 if (adjacentHex) {
                     adjacentHex.set('state', null);
                 }
@@ -58,15 +58,7 @@ export default Ember.Object.extend({
         }
     },
 
-    lookupHex({x, y, z}) {
-        const col = x + (z + (z & 1)) / 2;
-        const row = z;
-        const board = this.get('board');
-
-        if (board.hasOwnProperty(row)) {
-            return board[row][col];
-        }
-
-        return null;
+    lookupHex(coord) {
+        return this.board.lookupHex(coord);
     }
 });

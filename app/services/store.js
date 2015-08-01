@@ -1,5 +1,6 @@
 import Ember from 'ember';
 
+import Board from '../models/board';
 import CubeCoord from '../models/cube-coord';
 import Game from '../models/game';
 import Player from '../models/player';
@@ -47,7 +48,9 @@ export default Ember.Service.extend({
             id: guid(),
             players: players,
             currentPlayer: 0,
-            board: this.emptyGrid({width})
+            board: Board.create({
+                grid: this.emptyGrid({width})
+            })
         });
 
         this.postProcessBoard(game, boardShape);
@@ -57,15 +60,15 @@ export default Ember.Service.extend({
 
     postProcessBoard(game, shape) {
         if (shape === 'square') {
-            this.fillBoard(game.get('board'), 'forest');
+            this.fillBoard(game.get('board.grid'), 'forest');
         }
 
         if (shape === 'hexagon') {
-            this.fillHexBoard(game.get('board'), 'forest');
+            this.fillHexBoard(game.get('board.grid'), 'forest');
         }
 
         if (shape === 'random') {
-            this.fillRandomBoard(game.get('board'));
+            this.fillRandomBoard(game.get('board.grid'));
             this.eliminateIsolatedIslands(game);
             this.eliminateIsolatedEmptyZones(game);
             this.randomizeLake(game);
@@ -143,7 +146,7 @@ export default Ember.Service.extend({
     },
 
     eliminateIsolatedIslands(game) {
-        const grid = game.board;
+        const grid = game.board.grid;
         const midPoint = Math.floor(grid.length / 2);
         const middle = grid[midPoint][midPoint];
         const queue = [middle];
@@ -173,7 +176,7 @@ export default Ember.Service.extend({
     },
 
     eliminateIsolatedEmptyZones(game) {
-        const grid = game.board;
+        const grid = game.board.grid;
         const queue = [];
         const hexChecker = hex => {
             if (hex && hex.type === 'empty' && !hex.mainempty) {
@@ -236,13 +239,13 @@ export default Ember.Service.extend({
             }
         }
 
-        game.board.forEach(row => row.forEach(hex => {
+        game.board.grid.forEach(row => row.forEach(hex => {
             delete hex.probability;
         }));
     },
 
     getRandomCentralHex({board}) {
-        const size = board.length;
+        const size = board.grid.length;
 
         const midPoint = Math.floor(size / 2);
         const range = Math.floor(size / 6);
@@ -253,11 +256,11 @@ export default Ember.Service.extend({
         const xRand = rand.range(minRange, maxRange);
         const yRand = rand.range(minRange, maxRange);
 
-        return board[xRand][yRand];
+        return board.grid[xRand][yRand];
     },
 
     probabilityStepDown({board}) {
-        const size = board.length;
+        const size = board.grid.length;
 
         if (size >= 40) {
             return 0.05;
@@ -269,7 +272,7 @@ export default Ember.Service.extend({
     },
 
     addPrimaryResourceNodes(game) {
-        game.board.forEach(row => row.forEach(hex => {
+        game.board.grid.forEach(row => row.forEach(hex => {
             const neighbors = this.getNeighbors(hex, game);
             if (hex.type === 'forest' &&
                 this.countNeighbors(neighbors, 'forest') <= 1 &&
@@ -281,7 +284,7 @@ export default Ember.Service.extend({
     },
 
     addSecondaryResourceNodes(game) {
-        game.board.forEach(row => row.forEach(hex => {
+        game.board.grid.forEach(row => row.forEach(hex => {
             const neighbors = this.getNeighbors(hex, game);
             const forest = this.countNeighbors(neighbors, 'forest');
             const primary = this.countNeighbors(neighbors, 'resource-primary');
