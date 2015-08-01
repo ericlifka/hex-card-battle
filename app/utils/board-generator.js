@@ -3,6 +3,8 @@ import Ember from 'ember';
 import Board from '../models/board';
 import CubeCoord from '../models/cube-coord';
 
+import rand from './rand';
+
 export default Ember.Object.create({
     generate(width, shape) {
         const board = Board.create({
@@ -18,7 +20,7 @@ export default Ember.Object.create({
         }
 
         else if (shape === 'random') {
-            this.fillRAndomBoard(board);
+            this.fillRandomBoard(board);
         }
 
         return board;
@@ -71,8 +73,8 @@ export default Ember.Object.create({
         }));
     },
 
-    fillRandomBoard(board, shape) {
-        this.randomizeHexes(board.get('board.grid'));
+    fillRandomBoard(board) {
+        this.randomizeHexes(board);
         this.eliminateIsolatedIslands(board);
         this.eliminateIsolatedEmptyZones(board);
         this.randomizeLake(board);
@@ -81,14 +83,15 @@ export default Ember.Object.create({
     },
 
     randomizeHexes(board) {
-        const width = board[0].length;
+        const grid = board.get('grid');
+        const width = Math.min(grid.length, grid[0].length);
         const midPoint = Math.floor(width / 2);
         const breakOverThreshold = midPoint * 0.75;
 
-        const middle = board[midPoint][midPoint].get('coord');
-        const max = middle.distanceFrom(board[0][0].get('coord'));
+        const middle = grid[midPoint][midPoint].get('coord');
+        const max = middle.distanceFrom(grid[0][0].get('coord'));
 
-        board.forEach(row => row.forEach(hex => {
+        grid.forEach(row => row.forEach(hex => {
             hex.set('type', 'forest');
 
             const distance = middle.distanceFrom(hex.get('coord'));
@@ -103,9 +106,10 @@ export default Ember.Object.create({
         }));
     },
 
-    eliminateIsolatedIslands(game) {
-        const grid = game.board.grid;
-        const midPoint = Math.floor(grid.length / 2);
+    eliminateIsolatedIslands(board) {
+        const grid = board.get('grid');
+        const width = Math.min(grid.length, grid[0].length);
+        const midPoint = Math.floor(width / 2);
         const middle = grid[midPoint][midPoint];
         const queue = [middle];
         middle.mainland = true;
@@ -114,7 +118,7 @@ export default Ember.Object.create({
             const hex = queue.shift();
 
             hex.coord.adjacentCoords().forEach(coord => {
-                const neighbor = game.lookupHex(coord);
+                const neighbor = board.lookupHex(coord);
                 if (neighbor && neighbor.type !== 'empty' && !neighbor.mainland) {
                     neighbor.mainland = true;
                     queue.push(neighbor);
@@ -122,19 +126,17 @@ export default Ember.Object.create({
             });
         }
 
-        grid.forEach(row => {
-            row.forEach(hex => {
-                if (!hex.mainland) {
-                    hex.set('type', 'empty');
-                }
+        grid.forEach(row => row.forEach(hex => {
+            if (!hex.mainland) {
+                hex.set('type', 'empty');
+            }
 
-                delete hex.mainland;
-            });
-        });
+            delete hex.mainland;
+        }));
     },
 
-    eliminateIsolatedEmptyZones(game) {
-        const grid = game.board.grid;
+    eliminateIsolatedEmptyZones(board) {
+        const grid = board.get('grid');
         const queue = [];
         const hexChecker = hex => {
             if (hex && hex.type === 'empty' && !hex.mainempty) {
@@ -154,25 +156,24 @@ export default Ember.Object.create({
             const hex = queue.shift();
 
             hex.coord.adjacentCoords().forEach(coord => {
-                hexChecker(game.lookupHex(coord));
+                hexChecker(board.lookupHex(coord));
             });
         }
 
-        grid.forEach(row => {
-            row.forEach(hex => {
-                if (!hex.mainempty && hex.type === 'empty') {
-                    hex.set('type', 'lake');
-                }
+        grid.forEach(row => row.forEach(hex => {
+            if (!hex.mainempty && hex.type === 'empty') {
+                hex.set('type', 'lake');
+            }
 
-                delete hex.mainempty;
-            });
-        });
+            delete hex.mainempty;
+        }));
     },
 
-    randomizeLake(game) {
+    randomizeLake(board) {
         const queue = [];
-        const stepDown = this.probabilityStepDown(game);
-        const lakeSeed = this.getRandomCentralHex(game);
+        const grid = board.get('grid');
+        const stepDown = this.probabilityStepDown(grid);
+        const lakeSeed = this.getRandomCentralHex(grid);
 
         lakeSeed.probability = 1;
         queue.push(lakeSeed);
@@ -186,7 +187,7 @@ export default Ember.Object.create({
 
                 if (propagationProbability > 0) {
                     hex.coord.adjacentCoords().forEach(coord => {
-                        const adjacentHex = game.lookupHex(coord);
+                        const adjacentHex = board.lookupHex(coord);
 
                         if (adjacentHex && adjacentHex.type !== 'empty' && !adjacentHex.probability) {
                             adjacentHex.probability = propagationProbability;
@@ -197,13 +198,13 @@ export default Ember.Object.create({
             }
         }
 
-        game.board.grid.forEach(row => row.forEach(hex => {
+        board.grid.forEach(row => row.forEach(hex => {
             delete hex.probability;
         }));
     },
 
-    getRandomCentralHex({board}) {
-        const size = board.grid.length;
+    getRandomCentralHex(grid) {
+        const size = Math.min(grid.length, grid[0].length);
 
         const midPoint = Math.floor(size / 2);
         const range = Math.floor(size / 6);
@@ -214,24 +215,20 @@ export default Ember.Object.create({
         const xRand = rand.range(minRange, maxRange);
         const yRand = rand.range(minRange, maxRange);
 
-        return board.grid[xRand][yRand];
+        return grid[xRand][yRand];
     },
 
-    probabilityStepDown({board}) {
-        const size = board.grid.length;
+    probabilityStepDown(grid) {
+        const size = Math.min(grid.length, grid[0].length);
 
-        if (size >= 40) {
-            return 0.05;
-        } else if (size >= 20) {
-            return 0.1;
-        } else {
-            return 0.2;
-        }
+        return size >= 40 ? 0.05 :
+            size >= 20 ? 0.1 :
+                0.2;
     },
 
-    addPrimaryResourceNodes(game) {
-        game.board.grid.forEach(row => row.forEach(hex => {
-            const neighbors = this.getNeighbors(hex, game);
+    addPrimaryResourceNodes(board) {
+        board.get('grid').forEach(row => row.forEach(hex => {
+            const neighbors = this.getNeighbors(hex, board);
             if (hex.type === 'forest' &&
                 this.countNeighbors(neighbors, 'forest') <= 1 &&
                 this.countNeighbors(neighbors, 'resource-primary') === 0) {
@@ -241,9 +238,9 @@ export default Ember.Object.create({
         }));
     },
 
-    addSecondaryResourceNodes(game) {
-        game.board.grid.forEach(row => row.forEach(hex => {
-            const neighbors = this.getNeighbors(hex, game);
+    addSecondaryResourceNodes(board) {
+        board.get('grid').forEach(row => row.forEach(hex => {
+            const neighbors = this.getNeighbors(hex, board);
             const forest = this.countNeighbors(neighbors, 'forest');
             const primary = this.countNeighbors(neighbors, 'resource-primary');
             const secondary = this.countNeighbors(neighbors, 'resource-secondary');
@@ -254,8 +251,8 @@ export default Ember.Object.create({
         }));
     },
 
-    getNeighbors(hex, game) {
-        return hex.coord.adjacentCoords().map(coord => game.lookupHex(coord));
+    getNeighbors(hex, board) {
+        return hex.coord.adjacentCoords().map(coord => board.lookupHex(coord));
     },
 
     countNeighbors(neighbors, type) {
