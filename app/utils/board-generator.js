@@ -1,8 +1,15 @@
 import Ember from 'ember';
 
+import Board from '../models/board';
 import CubeCoord from '../models/cube-coord';
 
 export default Ember.Object.create({
+    generate(width) {
+        return Board.create({
+            grid: this.emptyGrid(width)
+        })
+    },
+
     emptyGrid(width) {
         const type = 'empty';
         const grid = [];

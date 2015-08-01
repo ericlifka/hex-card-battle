@@ -1,6 +1,5 @@
 import Ember from 'ember';
 
-import Board from '../models/board';
 import Game from '../models/game';
 import Player from '../models/player';
 
@@ -47,9 +46,7 @@ export default Ember.Service.extend({
             id: guid(),
             players: players,
             currentPlayer: 0,
-            board: Board.create({
-                grid: BoardGenerator.emptyGrid(width)
-            })
+            board: BoardGenerator.generate(width)
         });
 
         this.postProcessBoard(game, boardShape);
