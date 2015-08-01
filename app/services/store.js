@@ -7,6 +7,8 @@ import Player from '../models/player';
 import guid from '../utils/guid';
 import rand from '../utils/rand';
 
+import BoardGenerator from '../utils/board-generator';
+
 const sizes = {
     square: {
         small: 10,
