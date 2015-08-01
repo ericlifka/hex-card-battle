@@ -4,10 +4,14 @@ import Board from '../models/board';
 import CubeCoord from '../models/cube-coord';
 
 export default Ember.Object.create({
-    generate(width) {
-        return Board.create({
+    generate(width, shape) {
+        const board = Board.create({
             grid: this.emptyGrid(width)
-        })
+        });
+
+        this.postProcessBoard(board, shape);
+
+        return board;
     },
 
     emptyGrid(width) {
