@@ -9,7 +9,17 @@ export default Ember.Object.create({
             grid: this.emptyGrid(width)
         });
 
-        this.postProcessBoard(board, shape);
+        if (shape === 'square') {
+            this.fillSquareBoard(board);
+        }
+
+        else if (shape === 'hexagon') {
+            this.fillHexBoard(board);
+        }
+
+        else if (shape === 'random') {
+            this.fillRAndomBoard(board);
+        }
 
         return board;
     },
@@ -40,46 +50,37 @@ export default Ember.Object.create({
         }
     },
 
-    postProcessBoard(game, shape) {
-        if (shape === 'square') {
-            this.fillBoard(game.get('board.grid'), 'forest');
-        }
-
-        if (shape === 'hexagon') {
-            this.fillHexBoard(game.get('board.grid'), 'forest');
-        }
-
-        if (shape === 'random') {
-            this.fillRandomBoard(game.get('board.grid'));
-            this.eliminateIsolatedIslands(game);
-            this.eliminateIsolatedEmptyZones(game);
-            this.randomizeLake(game);
-            this.addPrimaryResourceNodes(game);
-            this.addSecondaryResourceNodes(game);
-        }
-    },
-
-    fillBoard(board, type) {
-        board.forEach(row => row.forEach(hex => {
+    fillSquareBoard(board, type = 'forest') {
+        board.get('grid').forEach(row => row.forEach(hex => {
             hex.set('type', type);
         }));
     },
 
-    fillHexBoard(board, type) {
-        const width = board[0].length;
+    fillHexBoard(board, type = 'forest') {
+        const grid = board.get('grid');
+        const width = Math.min(grid.length, grid[0].length);
         const size = (width + 1) / 2;
         const midPoint = Math.floor(width / 2);
 
-        const middle = board[midPoint][midPoint].get('coord');
+        const middle = grid[midPoint][midPoint].get('coord');
 
-        board.forEach(row => row.forEach(hex => {
+        grid.forEach(row => row.forEach(hex => {
             if (middle.distanceFrom(hex.get('coord')) < size) {
                 hex.set('type', type);
             }
         }));
     },
 
-    fillRandomBoard(board) {
+    fillRandomBoard(board, shape) {
+        this.randomizeHexes(board.get('board.grid'));
+        this.eliminateIsolatedIslands(board);
+        this.eliminateIsolatedEmptyZones(board);
+        this.randomizeLake(board);
+        this.addPrimaryResourceNodes(board);
+        this.addSecondaryResourceNodes(board);
+    },
+
+    randomizeHexes(board) {
         const width = board[0].length;
         const midPoint = Math.floor(width / 2);
         const breakOverThreshold = midPoint * 0.75;
