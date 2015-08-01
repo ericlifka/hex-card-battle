@@ -8,6 +8,7 @@ export default Ember.Component.extend({
 
     game: null,
     zoom: 1,
+    grid: Ember.computed.alias('game.board.grid'),
 
     zoomClass: Ember.computed('zoom', function () {
         return `zoom-${this.get('zoom')}`;

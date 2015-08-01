@@ -4,19 +4,19 @@
 .hex-board {
   padding-bottom: 50px;
 
-  .row {
-    display: flex;
-
-    &:nth-child(odd) {
-      margin-left: 53px;
-    }
-  }
-
-  .rows {
+  .grid {
     &.zoom-0 { zoom: 133.33%; }
     &.zoom-1 { zoom: 100%; }
     &.zoom-2 { zoom: 66.66%; }
     &.zoom-3 { zoom: 50%; }
     &.zoom-4 { zoom: 33.3%; }
+
+    .row {
+      display: flex;
+
+      &:nth-child(odd) {
+        margin-left: 53px;
+      }
+    }
   }
 }
