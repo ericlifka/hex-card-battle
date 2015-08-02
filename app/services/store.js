@@ -4,8 +4,8 @@ import Game from '../models/game';
 import Player from '../models/player';
 
 import guid from '../utils/guid';
-
 import BoardGenerator from '../utils/board-generator';
+import DeckGenerator from '../utils/deck-generator';
 
 const sizes = {
     square: {
@@ -43,6 +43,7 @@ export default Ember.Service.extend({
         const currentPlayer = 0;
         const board = BoardGenerator.generate(width, boardShape);
         id = id || guid();
+        players.forEach(player => player.set('deck', DeckGenerator.startingDeck()));
 
         return Game.create({id, players, currentPlayer, board});
     }
