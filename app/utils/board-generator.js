@@ -86,7 +86,7 @@ export default Ember.Object.create({
         const grid = board.get('grid');
         const width = Math.min(grid.length, grid[0].length);
         const midPoint = Math.floor(width / 2);
-        const breakOverThreshold = midPoint * 0.75;
+        const breakOverThreshold = midPoint * 0.5;
 
         const middle = grid[midPoint][midPoint].get('coord');
         const max = middle.distanceFrom(grid[0][0].get('coord'));

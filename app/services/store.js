@@ -19,9 +19,9 @@ const sizes = {
         large: 47
     },
     random: {
-        small: 10,
-        medium: 20,
-        large: 40
+        small: 11,
+        medium: 22,
+        large: 44
     }
 };
 
