@@ -4,15 +4,19 @@ import Card from '../models/card';
 
 export default Ember.Object.create({
     startingDeck() {
-        const name = 'Energy Well';
-        const art = '/art/energy-well.jpg';
-
         return [
-            Card.create({name, art}),
-            Card.create({name, art}),
-            Card.create({name, art}),
-            Card.create({name, art}),
-            Card.create({name, art})
+            Card.create(Cards.EnergyWell),
+            Card.create(Cards.EnergyWell),
+            Card.create(Cards.EnergyWell),
+            Card.create(Cards.EnergyWell),
+            Card.create(Cards.EnergyWell)
         ];
     }
 });
+
+const Cards = {
+    EnergyWell: {
+        name: 'Energy Well',
+        art: '/art/energy-well.jpg'
+    }
+};
