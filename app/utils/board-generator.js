@@ -200,6 +200,13 @@ export default Ember.Object.create({
 
         board.grid.forEach(row => row.forEach(hex => {
             delete hex.probability;
+
+            const neighbors = this.getNeighbors(hex, board);
+            if (hex.type === 'forest' &&
+                this.countNeighbors(neighbors, 'lake') === 6) {
+
+                hex.set('type', 'lake');
+            }
         }));
     },
 
@@ -229,6 +236,7 @@ export default Ember.Object.create({
     addPrimaryResourceNodes(board) {
         board.get('grid').forEach(row => row.forEach(hex => {
             const neighbors = this.getNeighbors(hex, board);
+
             if (hex.type === 'forest' &&
                 this.countNeighbors(neighbors, 'forest') <= 1 &&
                 this.countNeighbors(neighbors, 'resource-primary') === 0) {
