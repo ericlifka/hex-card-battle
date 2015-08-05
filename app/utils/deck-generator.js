@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 import Card from '../models/card';
 
+let Cards;
+
 export default Ember.Object.create({
     startingDeck() {
         return [
@@ -14,7 +16,7 @@ export default Ember.Object.create({
     }
 });
 
-const Cards = {
+Cards = {
     EnergyWell: {
         name: 'Energy Well',
         art: '/art/energy-well.jpg'
