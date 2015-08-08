@@ -5,10 +5,10 @@ import Player from '../../models/player';
 export default Ember.Component.extend({
     classNames: ['setup-game-component'],
 
-    boardSize: 'small',
+    boardSize: 'medium',
     boardSizeOptions: ['small', 'medium', 'large'],
 
-    boardShape: 'square',
+    boardShape: 'random',
     boardShapeOptions: ['hexagon', 'square', 'random'],
 
     playerCount: 2,
