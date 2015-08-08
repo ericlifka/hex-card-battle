@@ -15,24 +15,22 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    border: 0;
+    padding: 0;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
 
     .icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      float: left;
-      cursor: pointer;
       color: #fff;
       background-color: #b2b2b2;
-      border: 0;
       width: 40px;
       height: 40px;
       font-size: 24px;
-      padding: 0;
-
-      &:focus {
-        outline: none;
-      }
     }
     &:hover .icon {
       background-color: #8a8a8a;
