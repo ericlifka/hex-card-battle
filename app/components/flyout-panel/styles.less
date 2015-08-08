@@ -1,7 +1,15 @@
 .flyout-panel {
+  &.button-right {
+    .icon { order: 2; }
+    .label { order: 1; }
+  }
+  &.button-left {
+    .icon { order: 1; }
+    .label { order: 2; }
+  }
+
   .panel-label {
     font-size: 16px;
-    padding-right: 20px;
     background-color: #666;
     color: #fff;
     cursor: pointer;
@@ -31,7 +39,8 @@
     }
 
     .label {
-      padding-left: 10px;
+      padding-left: 20px;
+      padding-right: 20px;
     }
   }
 }
