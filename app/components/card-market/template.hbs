@@ -1,14 +1,7 @@
-{{#if expanded}}
+{{#flyout-panel title="Card market"}}
     <div class="card-row">
         {{#each cards as |card|}}
             {{interactive-card card=card}}
         {{/each}}
     </div>
-{{/if}}
-
-<div class="panel-label" {{action "togglePanelState"}}>
-    <button class="icon">
-        <span class="{{if expanded 'ion-arrow-shrink' 'ion-arrow-expand'}}"></span>
-    </button>
-    <span class="label">Card market</span>
-</div>
+{{/flyout-panel}}

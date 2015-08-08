@@ -1,0 +1,10 @@
+{{#if expanded}}
+    {{yield}}
+{{/if}}
+
+<div class="panel-label" {{action "toggleExpanded"}}>
+    <button class="icon">
+        <span class="{{if expanded 'ion-arrow-shrink' 'ion-arrow-expand'}}"></span>
+    </button>
+    <span class="label">{{title}}</span>
+</div>
