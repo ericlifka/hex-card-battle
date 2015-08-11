@@ -12,11 +12,11 @@ export default Ember.Object.extend({
         const art = '/art/energy-well.jpg';
 
         return [
-            Card.create({name, art}),
-            Card.create({name, art}),
-            Card.create({name, art}),
-            Card.create({name, art}),
-            Card.create({name, art})
+            Card.create({ name, art }),
+            Card.create({ name, art }),
+            Card.create({ name, art }),
+            Card.create({ name, art }),
+            Card.create({ name, art })
         ];
     }),
 
@@ -32,7 +32,6 @@ export default Ember.Object.extend({
             this.set('activeHex', null);
         }
     },
-
 
     activateHex(hex) {
         if (hex) {

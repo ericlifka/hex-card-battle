@@ -14,12 +14,12 @@ const CubeCoord = Ember.Object.extend({
         const z = this.get('z');
 
         return [
-            CubeCoord.fromCube(x-1, y+1, z),
-            CubeCoord.fromCube(x+1, y-1, z),
-            CubeCoord.fromCube(x, y-1, z+1),
-            CubeCoord.fromCube(x, y+1, z-1),
-            CubeCoord.fromCube(x+1, y, z-1),
-            CubeCoord.fromCube(x-1, y, z+1)
+            CubeCoord.fromCube(x - 1, y + 1, z),
+            CubeCoord.fromCube(x + 1, y - 1, z),
+            CubeCoord.fromCube(x, y - 1, z + 1),
+            CubeCoord.fromCube(x, y + 1, z - 1),
+            CubeCoord.fromCube(x + 1, y, z - 1),
+            CubeCoord.fromCube(x - 1, y, z + 1)
         ];
     },
 
@@ -40,12 +40,12 @@ CubeCoord.reopenClass({
         const z = row;
         const y = -x - z;
 
-        return CubeCoord.create({x, y, z});
+        return CubeCoord.create({ x, y, z });
     },
 
     fromCube(x, y, z) {
         Ember.assert("x + y + z must equal 0", x + y + z === 0);
-        return CubeCoord.create({x, y, z});
+        return CubeCoord.create({ x, y, z });
     }
 });
 
