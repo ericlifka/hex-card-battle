@@ -1,5 +1,6 @@
 {
     "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
+    "disallowKeywordsOnNewLine": null,
     "disallowSpacesInFunction": null,
     "validateIndentation": 4,
     "validateQuoteMarks": null
