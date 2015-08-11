@@ -34,7 +34,7 @@ export default Ember.Object.create({
             const row = [];
 
             for (let w = 0; w < width; w++) {
-                row.push(Ember.Object.create({type}));
+                row.push(Ember.Object.create({ type }));
             }
 
             grid.push(row);
