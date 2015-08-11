@@ -32,19 +32,19 @@ export default Ember.Service.extend({
             boardSize: 'medium',
             boardShape: 'random',
             players: [
-                Player.create({number: 1, name: 'player 1'}),
-                Player.create({number: 2, name: 'player 2'})
+                Player.create({ number: 1, name: 'player 1' }),
+                Player.create({ number: 2, name: 'player 2' })
             ]
         });
     },
 
-    newGame({boardSize, boardShape, players, id}) {
+    newGame({ boardSize, boardShape, players, id }) {
         const width = sizes[boardShape][boardSize] || 10;
         const currentPlayer = 0;
         const board = BoardGenerator.generate(width, boardShape);
         id = id || guid();
         players.forEach(player => player.set('deck', DeckGenerator.startingDeck()));
 
-        return Game.create({id, players, currentPlayer, board});
+        return Game.create({ id, players, currentPlayer, board });
     }
 });
