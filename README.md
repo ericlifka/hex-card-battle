@@ -1,7 +1,6 @@
 # Hex-card-battle
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+An Ember app to explore realtime digital board games, specifically a hexagonal miniatures game with deck building mechanics.
 
 ## Prerequisites
 
