@@ -11,14 +11,25 @@ export default Ember.Object.create({
             Card.create(Cards.EnergyWell),
             Card.create(Cards.EnergyWell),
             Card.create(Cards.EnergyWell),
-            Card.create(Cards.EnergyWell)
+            Card.create(Cards.EnergyWell),
+            Card.create(Cards.EnergyWell),
+            Card.create(Cards.EnergyWell),
+            Card.create(Cards.EnergyWell),
+            Card.create(Cards.SquirrelScout),
+            Card.create(Cards.SquirrelScout)
         ];
     }
 });
 
 Cards = {
+
     EnergyWell: {
         name: 'Energy Well',
         art: '/art/energy-well.jpg'
+    },
+
+    SquirrelScout: {
+        name: 'Squirrel Scout',
+        art: '/art/squirrel-scout.png'
     }
 };
