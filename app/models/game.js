@@ -6,6 +6,11 @@ export default Ember.Object.extend({
     id: null,
     board: null,
     activeHex: null,
+
+    phase: Ember.computed(() => Ember.Object.create({
+        isTurnTransition: false
+    })),
+
     cardMarketCards: Ember.computed(function () {
         // temporary data shim until the deck management part of the game gets built
         const name = 'Energy Well';

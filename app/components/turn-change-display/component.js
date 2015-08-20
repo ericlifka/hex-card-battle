@@ -1,5 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    classNames: ['turn-change-display']
+    classNameBindings: [
+        ':turn-change-display',
+        'game.phase.isTurnTransition::hidden'
+    ],
+    game: null
 });
