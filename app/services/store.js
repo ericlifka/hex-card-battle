@@ -40,11 +40,10 @@ export default Ember.Service.extend({
 
     newGame({ boardSize, boardShape, players, id }) {
         const width = sizes[boardShape][boardSize] || 10;
-        const currentPlayer = 0;
         const board = BoardGenerator.generate(width, boardShape);
         id = id || guid();
         players.forEach(player => player.set('deck', DeckGenerator.startingDeck()));
 
-        return Game.create({ id, players, currentPlayer, board });
+        return Game.create({ id, players, board });
     }
 });

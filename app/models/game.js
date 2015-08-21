@@ -5,9 +5,11 @@ export default Ember.Object.extend({
     /* Public Properties API */
     id: null,
     board: null,
+    players: null,
     activeHex: null,
 
     phase: Ember.computed(() => Ember.Object.create({
+        currentPlayer: 0,
         isTurnTransition: false
     })),
 
