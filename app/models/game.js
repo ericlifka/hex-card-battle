@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Card from './card';
+import DeckGenerator from '../utils/deck-generator';
 
 export default Ember.Object.extend({
     /* Public Properties API */
@@ -8,23 +8,18 @@ export default Ember.Object.extend({
     players: null,
     activeHex: null,
 
-    phase: Ember.computed(() => Ember.Object.create({
-        currentPlayer: 0,
-        isTurnTransition: false
-    })),
+    phase: null,
+    drawDeck: null,
+    cardMarketCards: null,
 
-    cardMarketCards: Ember.computed(function () {
-        // temporary data shim until the deck management part of the game gets built
-        const name = 'Energy Well';
-        const art = '/art/energy-well.jpg';
+    setInitialGameState: Ember.on('init', function () {
+        this.set('phase', Ember.Object.create({
+            currentPlayer: 0,
+            isTurnTransition: false
+        }));
 
-        return [
-            Card.create({ name, art }),
-            Card.create({ name, art }),
-            Card.create({ name, art }),
-            Card.create({ name, art }),
-            Card.create({ name, art })
-        ];
+        this.set('drawDeck', DeckGenerator.newDrawDeck());
+        this.set('cardMarketCards', []);
     }),
 
     /* Public Function API */

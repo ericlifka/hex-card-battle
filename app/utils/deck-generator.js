@@ -18,6 +18,10 @@ export default Ember.Object.create({
             Card.create(Cards.SquirrelScout),
             Card.create(Cards.SquirrelScout)
         ];
+    },
+
+    newDrawDeck() {
+        return [];
     }
 });
 
