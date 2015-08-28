@@ -8,9 +8,10 @@
     "ember-qunit": "0.3.3",
     "ember-qunit-notifications": "0.0.7",
     "ember-resolver": "~0.1.15",
+    "ionicons": "~2.0.1",
     "jquery": "^2.x.x",
     "loader.js": "ember-cli/loader.js#3.2.0",
     "qunit": "~1.17.1",
-    "ionicons": "~2.0.1"
+    "ramda": "~0.17.1"
   }
 }
