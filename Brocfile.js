@@ -14,6 +14,7 @@ var app = new EmberApp({
 });
 
 app.import('bower_components/ionicons/css/ionicons.css');
+app.import('bower_components/ramda/dist/ramda.js');
 
 var ionicons = funnel('bower_components/ionicons/fonts', {
     srcDir: '/',
