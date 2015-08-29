@@ -6,18 +6,10 @@ let Cards;
 
 export default Ember.Object.create({
     startingDeck() {
-        return [
-            Card.create(Cards.EnergyWell),
-            Card.create(Cards.EnergyWell),
-            Card.create(Cards.EnergyWell),
-            Card.create(Cards.EnergyWell),
-            Card.create(Cards.EnergyWell),
-            Card.create(Cards.EnergyWell),
-            Card.create(Cards.EnergyWell),
-            Card.create(Cards.EnergyWell),
-            Card.create(Cards.SquirrelScout),
-            Card.create(Cards.SquirrelScout)
-        ];
+        return R.flatten([
+            R.map(() => Card.create(Cards.EnergyWell), R.range(0, 8)),
+            R.map(() => Card.create(Cards.SquirrelScout), R.range(0, 2))
+        ]);
     },
 
     newDrawDeck() {
