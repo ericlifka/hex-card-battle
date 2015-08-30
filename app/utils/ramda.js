@@ -1,4 +1,4 @@
-const R = window.R;
+const { R } = window;
 
 const sort = R.sortBy(R.prop('comparable'));
 const sortable = item => ({ item, comparable: Math.random() });
