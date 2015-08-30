@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 import Card from '../models/card';
-import R from '../ramda.js';
+import R from './ramda';
 
 const Cards = {
     EnergyWell: {
