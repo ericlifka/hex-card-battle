@@ -14,7 +14,11 @@ const Cards = {
     }
 };
 
-const Generators = R.mapObj(def => () => Card.create(def), Cards);
+const createCardGenerator = cardDef => function () {
+    return Card.create(cardDef);
+};
+
+const Generators = R.mapObj(createCardGenerator, Cards);
 
 export default Ember.Object.create({
     startingDeck() {
