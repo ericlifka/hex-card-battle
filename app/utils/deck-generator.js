@@ -13,7 +13,8 @@ const Cards = {
         art: '/art/squirrel-scout.png'
     }
 };
-const Generators = R.mapObj(def => Card.create(def), Cards);
+
+const Generators = R.mapObj(def => () => Card.create(def), Cards);
 
 export default Ember.Object.create({
     startingDeck() {
