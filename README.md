@@ -1,6 +1,7 @@
 # Hex-card-battle
 
 An Ember app to explore realtime digital board games, specifically a hexagonal miniatures game with deck building mechanics.
+For now this is a client only project, but there are future plans to implement a synchronization server to allow online multiplayer.
 
 ## Prerequisites
 
