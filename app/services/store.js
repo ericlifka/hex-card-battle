@@ -6,6 +6,7 @@ import Player from '../models/player';
 import guid from '../utils/guid';
 import BoardGenerator from '../utils/board-generator';
 import DeckGenerator from '../utils/deck-generator';
+import { shuffle } from '../utils/ramda';
 
 const sizes = {
     square: {
@@ -39,11 +40,14 @@ export default Ember.Service.extend({
     },
 
     newGame({ boardSize, boardShape, players, id }) {
+        id = id || guid();
+
         const width = sizes[boardShape][boardSize] || 10;
         const board = BoardGenerator.generate(width, boardShape);
-        id = id || guid();
+        const drawDeck = shuffle(DeckGenerator.newDrawDeck());
+
         players.forEach(player => player.set('deck', DeckGenerator.startingDeck()));
 
-        return Game.create({ id, players, board });
+        return Game.create({ id, players, board, drawDeck });
     }
 });

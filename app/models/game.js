@@ -1,6 +1,4 @@
 import Ember from 'ember';
-import DeckGenerator from '../utils/deck-generator';
-import { shuffle } from '../utils/ramda';
 
 export default Ember.Object.extend({
     /* Public Properties API */
@@ -19,7 +17,6 @@ export default Ember.Object.extend({
             isTurnTransition: false
         }));
 
-        this.set('drawDeck', shuffle(DeckGenerator.newDrawDeck()));
         this.set('cardMarketCards', []);
     }),
 
