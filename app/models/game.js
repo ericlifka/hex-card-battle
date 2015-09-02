@@ -1,24 +1,21 @@
 import Ember from 'ember';
+const {
+    Object,
+    computed } = Ember;
 
-export default Ember.Object.extend({
+export default Object.extend({
     /* Public Properties API */
     id: null,
     board: null,
     players: null,
     activeHex: null,
 
-    phase: null,
     drawDeck: null,
-    cardMarketCards: null,
-
-    setInitialGameState: Ember.on('init', function () {
-        this.set('phase', Ember.Object.create({
-            currentPlayer: 0,
-            isTurnTransition: false
-        }));
-
-        this.set('cardMarketCards', []);
-    }),
+    phase: computed(() => Object.create({
+        currentPlayer: 0,
+        isTurnTransition: false
+    })),
+    cardMarketCards: computed(() => []),
 
     /* Public Function API */
     clickHex(hex) {
@@ -27,7 +24,8 @@ export default Ember.Object.extend({
             this.deactivateHex(active);
             this.activateHex(hex);
             this.set('activeHex', hex);
-        } else {
+        }
+        else {
             this.deactivateHex(hex);
             this.set('activeHex', null);
         }
