@@ -1,9 +1,7 @@
 import Ember from 'ember';
-const {
-    Object,
-    computed } = Ember;
+const { computed } = Ember;
 
-export default Object.extend({
+export default Ember.Object.extend({
     /* Public Properties API */
     id: null,
     board: null,
