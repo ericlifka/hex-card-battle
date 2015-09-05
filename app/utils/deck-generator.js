@@ -12,10 +12,15 @@ const Generators = R.mapObj(createCardGenerator, Cards);
 
 export default Ember.Object.create({
     startingDeck() {
-        return R.flatten([
-            R.map(Generators.ManaGem, R.range(0, 8)),
-            R.map(Generators.SummonBasicUnit, R.range(0, 2))
+        const expandCard = ([cardGen, count]) => R.map(cardGen, R.range(0, count));
+        const nestedDeck = R.map(expandCard, [
+            [Generators.ManaGem, 4],
+            [Generators.SimpleOrders, 3],
+            [Generators.MagicalCommand, 2],
+            [Generators.SummonBasicUnit, 1]
         ]);
+
+        return R.flatten(nestedDeck);
     },
 
     newDrawDeck() {
