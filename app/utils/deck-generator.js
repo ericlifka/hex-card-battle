@@ -1,18 +1,8 @@
 import Ember from 'ember';
 
 import Card from '../models/card';
+import Cards from './card-definitions';
 import R from './ramda';
-
-const Cards = {
-    EnergyWell: {
-        name: 'Energy Well',
-        art: '/art/energy-well.jpg'
-    },
-    SquirrelScout: {
-        name: 'Squirrel Scout',
-        art: '/art/squirrel-scout.png'
-    }
-};
 
 const createCardGenerator = cardDef => function () {
     return Card.create(cardDef);
