@@ -13,8 +13,8 @@ const Generators = R.mapObj(createCardGenerator, Cards);
 export default Ember.Object.create({
     startingDeck() {
         return R.flatten([
-            R.map(Generators.EnergyWell, R.range(0, 8)),
-            R.map(Generators.SquirrelScout, R.range(0, 2))
+            R.map(Generators.ManaGem, R.range(0, 8)),
+            R.map(Generators.SummonBasicUnit, R.range(0, 2))
         ]);
     },
 

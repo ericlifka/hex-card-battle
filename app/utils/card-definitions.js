@@ -37,8 +37,15 @@ export default {
             }
         ]
     },
-    SquirrelScout: {
-        name: 'Squirrel Scout',
-        art: '/art/squirrel-scout.png'
+    SummonBasicUnit: {
+        name: 'SummonBasicUnit',
+        art: 'PLACEHOLDER',
+        mechanics: [
+            {
+                type: 'summon-unit',
+                options: ['squirrel-scout'],
+                cost: 3
+            }
+        ]
     }
 };
