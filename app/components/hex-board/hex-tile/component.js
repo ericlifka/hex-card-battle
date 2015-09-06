@@ -1,14 +1,15 @@
 import Ember from 'ember';
+const { Component, computed, inject } = Ember;
 
-export default Ember.Component.extend({
-    debug: Ember.inject.service(),
-
+export default Component.extend({
     classNameBindings: [':hex-tile', 'hex.type', 'hex.state'],
+
+    debug: inject.service(),
 
     game: null,
     hex: null,
 
-    hasResource: Ember.computed('hex.type', function () {
+    hasResource: computed('hex.type', function () {
         const type = this.get('hex.type');
 
         return type === 'resource-primary' || type === 'resource-secondary';

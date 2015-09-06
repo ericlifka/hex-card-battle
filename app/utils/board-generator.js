@@ -1,11 +1,10 @@
-import Ember from 'ember';
-
+import GameModel from '../models/model-base';
 import Board from '../models/board';
 import CubeCoord from '../models/cube-coord';
 
 import rand from './rand';
 
-export default Ember.Object.create({
+export default {
     generate(width, shape) {
         const board = Board.create({
             grid: this.emptyGrid(width)
@@ -34,7 +33,7 @@ export default Ember.Object.create({
             const row = [];
 
             for (let w = 0; w < width; w++) {
-                row.push(Ember.Object.create({ type }));
+                row.push(GameModel.create({ type }));
             }
 
             grid.push(row);
@@ -47,7 +46,7 @@ export default Ember.Object.create({
     setCubeCoords(grid) {
         for (let row = 0; row < grid.length; row++) {
             for (let col = 0; col < grid[row].length; col++) {
-                Ember.set(grid[row][col], 'coord', CubeCoord.fromRowCol(row, col));
+                grid[row][col].set('coord', CubeCoord.fromRowCol(row, col));
             }
         }
     },
@@ -272,4 +271,4 @@ export default Ember.Object.create({
         });
         return count;
     }
-});
+};

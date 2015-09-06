@@ -1,5 +1,3 @@
-import Ember from 'ember';
-
 import Card from '../models/card';
 import Cards from './card-definitions';
 import R from './ramda';
@@ -10,7 +8,7 @@ const createCardGenerator = cardDef => function () {
 
 const Generators = R.mapObj(createCardGenerator, Cards);
 
-export default Ember.Object.create({
+export default {
     startingDeck() {
         const expandCard = ([cardGen, count]) => R.map(cardGen, R.range(0, count));
         const nestedDeck = R.map(expandCard, [
@@ -26,4 +24,4 @@ export default Ember.Object.create({
     newDrawDeck() {
         return [];
     }
-});
+};

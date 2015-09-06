@@ -1,8 +1,9 @@
 import Ember from 'ember';
+const { Component, computed } = Ember;
 
-export default Ember.Component.extend({
+export default Component.extend({
     classNames: ['player-display'],
 
     game: null,
-    players: Ember.computed.alias('game.players')
+    players: computed.alias('game.players')
 });

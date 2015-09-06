@@ -1,4 +1,5 @@
 import Ember from 'ember';
+const { Service } = Ember;
 
 import Game from '../models/game';
 import Player from '../models/player';
@@ -26,7 +27,7 @@ const sizes = {
     }
 };
 
-export default Ember.Service.extend({
+export default Service.extend({
     lookupById(id) {
         return this.newGame({
             id,

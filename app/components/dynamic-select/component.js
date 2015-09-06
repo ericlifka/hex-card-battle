@@ -1,14 +1,15 @@
 import Ember from 'ember';
+const { Component, computed, generateGuid } = Ember;
 
-export default Ember.Component.extend({
+export default Component.extend({
     classNames: ['dynamic-select'],
 
     description: null,
     contents: null,
     selected: null,
 
-    uniqueId: Ember.computed(function () {
-        return Ember.generateGuid(this, "dynamic-select-");
+    uniqueId: computed(function () {
+        return generateGuid(this, "dynamic-select-");
     }),
 
     actions: {

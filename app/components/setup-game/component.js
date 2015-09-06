@@ -1,8 +1,9 @@
 import Ember from 'ember';
+const { Component, computed } = Ember;
 
 import Player from '../../models/player';
 
-export default Ember.Component.extend({
+export default Component.extend({
     classNames: ['setup-game-component'],
 
     boardSize: 'medium',
@@ -14,7 +15,7 @@ export default Ember.Component.extend({
     playerCount: 2,
     playerCountOptions: [2, 3, 4],
 
-    players: Ember.computed('playerCount', function () {
+    players: computed('playerCount', function () {
         const playerCount = this.get('playerCount');
         const players = [];
 

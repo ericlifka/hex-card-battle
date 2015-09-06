@@ -1,8 +1,9 @@
 import Ember from 'ember';
+const { Component, computed } = Ember;
 
-export default Ember.Component.extend({
+export default Component.extend({
     classNames: ['card-market'],
 
     game: null,
-    cards: Ember.computed.alias('game.cardMarketCards')
+    cards: computed.alias('game.cardMarketCards')
 });

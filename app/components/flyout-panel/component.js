@@ -1,11 +1,12 @@
 import Ember from 'ember';
+const { Component, computed } = Ember;
 
-export default Ember.Component.extend({
+export default Component.extend({
     classNameBindings: [':flyout-panel', 'order'],
     expanded: false,
     buttonOnRight: false,
 
-    order: Ember.computed('buttonOnRight', function () {
+    order: computed('buttonOnRight', function () {
         return this.get('buttonOnRight') ?
             'button-right' :
             'button-left';

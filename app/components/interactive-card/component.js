@@ -1,9 +1,10 @@
 import Ember from 'ember';
+const { Component, computed } = Ember;
 
-export default Ember.Component.extend({
+export default Component.extend({
     classNames: ['interactive-card'],
 
     card: null,
-    name: Ember.computed.alias('card.name'),
-    art: Ember.computed.alias('card.art')
+    name: computed.alias('card.name'),
+    art: computed.alias('card.art')
 });

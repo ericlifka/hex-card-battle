@@ -1,7 +1,8 @@
 import Ember from 'ember';
+const { inject, Route } = Ember;
 
-export default Ember.Route.extend({
-    store: Ember.inject.service(),
+export default Route.extend({
+    store: inject.service(),
 
     actions: {
         createGame(description) {

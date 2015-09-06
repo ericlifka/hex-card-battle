@@ -1,16 +1,17 @@
 import Ember from 'ember';
+const { Component, computed } = Ember;
 
 const ZOOM_MIN = 0;
 const ZOOM_MAX = 4;
 
-export default Ember.Component.extend({
+export default Component.extend({
     classNameBindings: [':hex-board'],
 
     game: null,
     zoom: 1,
-    grid: Ember.computed.alias('game.board.grid'),
+    grid: computed.alias('game.board.grid'),
 
-    zoomClass: Ember.computed('zoom', function () {
+    zoomClass: computed('zoom', function () {
         return `zoom-${this.get('zoom')}`;
     }),
 
