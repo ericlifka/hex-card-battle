@@ -1,5 +1,6 @@
-import Ember from 'ember';
 import GameModel from './model-base';
+import Ember from 'ember';
+const { assert } = Ember;
 
 // This class encapsulates a hex grid coordinate system and its associated
 // calculations. This system borrows heavily from the one defined here:
@@ -45,7 +46,7 @@ CubeCoord.reopenClass({
     },
 
     fromCube(x, y, z) {
-        Ember.assert("x + y + z must equal 0", x + y + z === 0);
+        assert("x + y + z must equal 0", x + y + z === 0);
         return CubeCoord.create({ x, y, z });
     }
 });
