@@ -1,9 +1,10 @@
 import Ember from 'ember';
+import GameModel from './model-base';
 
 // This class encapsulates a hex grid coordinate system and its associated
 // calculations. This system borrows heavily from the one defined here:
 //      http://www.redblobgames.com/grids/hexagons/
-const CubeCoord = Ember.Object.extend({
+const CubeCoord = GameModel.extend({
     x: 0,
     y: 0,
     z: 0,

@@ -1,7 +1,8 @@
+import GameModel from './model-base';
 import Ember from 'ember';
 const { computed } = Ember;
 
-export default Ember.Object.extend({
+export default GameModel.extend({
     /* Public Properties API */
     id: null,
     board: null,
@@ -9,7 +10,7 @@ export default Ember.Object.extend({
     activeHex: null,
 
     drawDeck: null,
-    phase: computed(() => Object.create({
+    phase: computed(() => GameModel.create({
         currentPlayer: 0,
         isTurnTransition: false
     })),

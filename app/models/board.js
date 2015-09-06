@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import GameModel from './model-base';
 
-export default Ember.Object.extend({
+export default GameModel.extend({
     grid: null,
 
     lookupHex({ x, y, z }) {
