@@ -10,7 +10,8 @@ export default Component.extend({
     game: null,
     phase: computed.alias('game.phase'),
 
-    visible: computed(function () {
-        return false;
+    visible: computed('phase.{gamePhase,isTurnTransition}', function () {
+        return this.get('phase.gamePhase') ||
+            this.get('phase.isTurnTransition');
     })
 });
