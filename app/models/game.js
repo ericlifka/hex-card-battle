@@ -11,6 +11,7 @@ export default GameModel.extend({
 
     drawDeck: null,
     phase: computed(() => GameModel.create({
+        gamePhase: 'start',
         currentPlayer: 0,
         isTurnTransition: false
     })),

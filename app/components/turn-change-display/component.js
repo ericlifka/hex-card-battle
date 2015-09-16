@@ -1,10 +1,16 @@
 import Ember from 'ember';
-const { Component } = Ember;
+const { Component, computed } = Ember;
 
 export default Component.extend({
     classNameBindings: [
         ':turn-change-display',
-        'game.phase.isTurnTransition::hidden'
+        'visible::hidden'
     ],
-    game: null
+
+    game: null,
+    phase: computed.alias('game.phase'),
+
+    visible: computed(function () {
+        return false;
+    })
 });
