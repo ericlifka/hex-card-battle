@@ -11,5 +11,11 @@ export default Component.extend({
     phase: computed.alias('game.phase'),
 
     isGameStart: computed.equal('phase.gamePhase', 'start'),
-    visible: computed.or('isGameStart')
+    visible: computed.or('isGameStart'),
+
+    actions: {
+        startGame() {
+
+        }
+    }
 });
