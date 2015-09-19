@@ -5,7 +5,7 @@ const { Router } = Ember;
 
 const AppRouter = Router.extend({ location: config.locationType });
 AppRouter.map(function () {
-    this.resource('game', {
+    this.route('game', {
         path: '/game/:game_id'
     });
     this.route('new-game');
