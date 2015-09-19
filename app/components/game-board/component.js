@@ -8,7 +8,6 @@ export default Component.extend({
 
     actions: {
         startGame() {
-            console.log('start game');
             const phase = this.get('game.phase');
 
             phase.set('gamePhase', 'turnStart');
