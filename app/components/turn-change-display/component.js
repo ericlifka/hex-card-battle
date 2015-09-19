@@ -8,7 +8,11 @@ export default Component.extend({
     ],
 
     game: null,
-    gamePhase: computed.alias('game.phase.gamePhase'),
+
+    phase: computed.alias('game.phase'),
+    gamePhase: computed.alias('phase.gamePhase'),
+    activePlayer: computed.alias('phase.activePlayer'),
+    turn: computed.alias('phase.turn'),
 
     isGameStart: computed.equal('gamePhase', 'gameStart'),
     isTurnStart: computed.equal('gamePhase', 'turnStart'),

@@ -13,7 +13,8 @@ export default GameModel.extend({
     phase: computed(() => GameModel.create({
         gamePhase: 'gameStart',
         activePlayer: null,
-        activePlayerIndex: null
+        activePlayerIndex: null,
+        turn: 0
     })),
     cardMarketCards: computed(() => []),
 

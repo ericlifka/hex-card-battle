@@ -14,6 +14,10 @@ export default Component.extend({
             phase.set('gamePhase', 'turnStart');
             phase.set('activePlayerIndex', 0);
             phase.set('activePlayer', this.get('game.players.firstObject'));
+        },
+
+        startTurn() {
+
         }
     }
 });

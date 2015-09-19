@@ -1,8 +1,18 @@
 <div class="modal-wrapper">
     <div class="content">
         {{#if isGameStart}}
-            <h3>Beginning of Game</h3>
+            <div class="header">Beginning of Game</div>
             <button {{action attrs.startGame}}>Start Game</button>
+        {{/if}}
+
+        {{#if isTurnStart}}
+            <div class="header">
+                <div class="player">Active Player: {{activePlayer.name}}</div>
+                <div class="turn">Turn: {{turn}}</div>
+            </div>
+            <div class="body">
+                <button {{action attrs.startTurn}}>Begin the turn</button>
+            </div>
         {{/if}}
     </div>
 </div>
