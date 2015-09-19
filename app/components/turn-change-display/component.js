@@ -8,8 +8,9 @@ export default Component.extend({
     ],
 
     game: null,
-    phase: computed.alias('game.phase'),
+    gamePhase: computed.alias('game.phase.gamePhase'),
 
-    isGameStart: computed.equal('phase.gamePhase', 'gameStart'),
-    visible: computed.or('isGameStart')
+    isGameStart: computed.equal('gamePhase', 'gameStart'),
+    isTurnStart: computed.equal('gamePhase', 'turnStart'),
+    visible: computed.or('isGameStart', 'isTurnStart')
 });
