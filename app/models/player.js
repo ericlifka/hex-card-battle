@@ -9,5 +9,35 @@ export default GameModel.extend({
 
     hand: computed(() => []),
     deck: computed(() => []),
-    discard: computed(() => [])
+    discard: computed(() => []),
+
+    refillHand() {
+        while (this.get('hand.length') < 5) {
+            const empty = this.drawCard();
+            if (empty) {
+                break;
+            }
+        }
+    },
+
+    drawCard() {
+        const deck = this.get('deck');
+        const discard = this.get('discard');
+        const hand = this.get('hand');
+
+        if (deck.get('length') === 0) {
+            if (discard.get('length') === 0) {
+                return true;
+            }
+            else {
+                this.refreshDeck();
+            }
+        }
+
+        hand.pushObject(deck.popObject());
+    },
+
+    refreshDeck() {
+
+    }
 });
