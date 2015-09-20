@@ -38,6 +38,11 @@ export default GameModel.extend({
     },
 
     refreshDeck() {
+        const deck = this.get('deck');
+        const discard = this.get('discard');
+
+        this.set('discard', []);
+        deck.pushObjects(discard);
 
     }
 });
