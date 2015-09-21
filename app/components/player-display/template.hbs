@@ -1,5 +1,5 @@
 {{#each players as |player|}}
-    <div class="player">
+    <div class="player {{if (eq activePlayer player) 'active'}}">
         {{player.name}}
     </div>
 {{/each}}

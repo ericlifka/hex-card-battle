@@ -5,5 +5,6 @@ export default Component.extend({
     classNames: ['player-display'],
 
     game: null,
-    players: computed.alias('game.players')
+    players: computed.alias('game.players'),
+    activePlayer: computed.alias('game.phase.activePlayer')
 });
