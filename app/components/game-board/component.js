@@ -17,6 +17,7 @@ export default Component.extend({
 
         startTurn() {
             this.get('game.phase.activePlayer').refillHand();
+            this.set('game.phase.gamePhase', 'turnActive');
         }
     }
 });
