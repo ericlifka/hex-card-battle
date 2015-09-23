@@ -6,6 +6,10 @@ export default Component.extend({
 
     game: null,
 
+    debugGame: Ember.observer('game', function () {
+        window.activeGame = this.get('game');
+    }).on('init'),
+
     actions: {
         startGame() {
             const phase = this.get('game.phase');
