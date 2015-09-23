@@ -1,3 +1,7 @@
 {{#flyout-panel title="Player section" buttonOnRight=true}}
-
+    <div class="card-row">
+        {{#each cards as |card|}}
+            {{interactive-card card=card}}
+        {{/each}}
+    </div>
 {{/flyout-panel}}
