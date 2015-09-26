@@ -2,11 +2,9 @@
 
 var funnel = require('broccoli-funnel');
 var mergeTrees = require('broccoli-merge-trees');
-
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function () {
-
     var app = new EmberApp({
         lessOptions: {
             paths: [
@@ -23,10 +21,7 @@ module.exports = function () {
         destDir: '/fonts'
     });
 
-    return module.exports = mergeTrees([
-        app.toTree(),
-        ionicons
-    ], {
+    return mergeTrees([ app.toTree(), ionicons ], {
         overwrite: true
     });
 
