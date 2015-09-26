@@ -1,6 +1,8 @@
-{{#if expanded}}
-    {{yield}}
-{{/if}}
+<div class="content">
+    {{#if expanded}}
+        {{yield}}
+    {{/if}}
+</div>
 
 <button class="panel-label modal-banner" {{action "toggleExpanded"}}>
     <div class="icon">

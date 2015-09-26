@@ -2,14 +2,22 @@ import Ember from 'ember';
 const { Component, computed } = Ember;
 
 export default Component.extend({
-    classNameBindings: [':flyout-panel', 'order'],
+    classNameBindings: [':flyout-panel', 'layoutClasses'],
     expanded: false,
-    buttonOnRight: false,
+    position: null,
 
-    order: computed('buttonOnRight', function () {
-        return this.get('buttonOnRight') ?
-            'button-right' :
-            'button-left';
+    layoutClasses: computed('position', function () {
+        const position = this.get('position');
+
+        if (position === 'top-right') {
+            return 'button-on-left title-on-bottom';
+        }
+        else if (position === 'bottom-left') {
+            return 'button-on-right title-on-top';
+        }
+        else {
+            return '';
+        }
     }),
 
     actions: {

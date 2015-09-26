@@ -1,11 +1,39 @@
 .flyout-panel {
-  &.button-right {
-    .icon { order: 2; }
-    .label { order: 1; }
+  display: flex;
+  flex-direction: column;
+
+  &.button-on-right {
+    .icon {
+      order: 2;
+    }
+    .label {
+      order: 1;
+    }
   }
-  &.button-left {
-    .icon { order: 1; }
-    .label { order: 2; }
+  &.button-on-left {
+    .icon {
+      order: 1;
+    }
+    .label {
+      order: 2;
+    }
+  }
+
+  &.title-on-top {
+    .content {
+      order: 2;
+    }
+    .panel-label {
+      order: 1;
+    }
+  }
+  &.title-on-bottom {
+    .content {
+      order: 1;
+    }
+    .panel-label {
+      order: 2;
+    }
   }
 
   .panel-label {
