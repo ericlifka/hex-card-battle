@@ -11,7 +11,7 @@ export default {
         ]
     },
     SimpleOrders: {
-        name: 'SimpleOrders',
+        name: 'Simple Orders',
         art: 'PLACEHOLDER',
         mechanics: [
             {
@@ -38,7 +38,7 @@ export default {
         ]
     },
     SummonBasicUnit: {
-        name: 'SummonBasicUnit',
+        name: 'Summon Unit',
         art: 'PLACEHOLDER',
         mechanics: [
             {
