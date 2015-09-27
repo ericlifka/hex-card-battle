@@ -8,7 +8,8 @@ export default {
                 resource: 'mana',
                 count: 1
             }
-        ]
+        ],
+        displayText: "+1 Mana"
     },
     SimpleOrders: {
         name: 'Simple Orders',
@@ -19,7 +20,8 @@ export default {
                 resource: 'action',
                 count: 1
             }
-        ]
+        ],
+        displayText: "+1 Action point"
     },
     MagicalCommand: {
         name: 'Magical Command',
@@ -35,6 +37,11 @@ export default {
                 resource: 'action',
                 count: 1
             }
+        ],
+        displayText: [
+            "Choose:",
+            "+1 Mana or",
+            "+1 Action point"
         ]
     },
     SummonBasicUnit: {
@@ -43,9 +50,13 @@ export default {
         mechanics: [
             {
                 type: 'summon-unit',
-                options: ['squirrel-scout'],
+                options: [ 'squirrel-scout' ],
                 cost: 3
             }
+        ],
+        displayText: [
+            "Summon:",
+            "Squirrel Scout"
         ]
     }
 };
