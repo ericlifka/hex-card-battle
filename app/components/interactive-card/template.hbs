@@ -2,7 +2,8 @@
     <div class="header">{{name}}</div>
     <img src="{{art}}" class="art" />
     <div class="rules">
-        <p>Do a thing.</p>
-        <p>Do another thing.</p>
+        {{#each displayText as |line|}}
+            <div class="line">{{line}}</div>
+        {{/each}}
     </div>
 </div>
