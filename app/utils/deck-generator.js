@@ -12,9 +12,9 @@ export default {
     startingDeck() {
         const expandCard = ([cardGen, count]) => R.map(cardGen, R.range(0, count));
         const nestedDeck = R.map(expandCard, [
-            [Generators.ManaGem, 4],
-            [Generators.SimpleOrders, 3],
-            [Generators.MagicalCommand, 2],
+            [Generators.ManaGem, 6],
+            [Generators.SimpleOrders, 2],
+            [Generators.MagicalCommand, 1],
             [Generators.SummonBasicUnit, 1]
         ]);
 
