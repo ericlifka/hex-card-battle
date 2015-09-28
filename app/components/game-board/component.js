@@ -13,10 +13,13 @@ export default Component.extend({
     actions: {
         startGame() {
             const phase = this.get('game.phase');
+            const players = this.get('game.players');
 
             phase.set('gamePhase', 'turnStart');
             phase.set('activePlayerIndex', 0);
-            phase.set('activePlayer', this.get('game.players.firstObject'));
+            phase.set('activePlayer', players.get('firstObject'));
+
+            players.forEach(player => player.refreshDeck());
         },
 
         startTurn() {
