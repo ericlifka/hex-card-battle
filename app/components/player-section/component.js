@@ -6,5 +6,11 @@ export default Component.extend({
 
     game: null,
     player: computed.alias('game.phase.activePlayer'),
-    hand: computed.alias('player.hand')
+    hand: computed.alias('player.hand'),
+
+    actions: {
+        playCard(card) {
+
+        }
+    }
 });
