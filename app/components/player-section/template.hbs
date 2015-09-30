@@ -1,4 +1,5 @@
 {{#flyout-panel title="Player section" position="bottom-left"}}
+    {{player-section.resource-display game=game}}
     <div class="hand card-row">
         {{#each hand as |card index|}}
             <div class="card-slot {{index}}">
