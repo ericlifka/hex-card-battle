@@ -23,7 +23,11 @@ export default Component.extend({
         },
 
         startTurn() {
-            this.get('game.phase.activePlayer').refillHand();
+            const player = this.get('game.phase.activePlayer');
+
+            player.refillHand();
+            player.resetResources();
+
             this.set('game.phase.gamePhase', 'turnActive');
         }
     }

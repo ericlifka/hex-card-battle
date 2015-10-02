@@ -47,7 +47,10 @@ export default Service.extend({
         const board = BoardGenerator.generate(width, boardShape);
         const drawDeck = shuffle(DeckGenerator.newDrawDeck());
 
-        players.forEach(player => player.set('deck', DeckGenerator.startingDeck()));
+        players.forEach(player => {
+            player.set('deck', DeckGenerator.startingDeck());
+            player.resetResources();
+        });
 
         return Game.create({ id, players, board, drawDeck });
     }

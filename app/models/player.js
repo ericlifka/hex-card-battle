@@ -21,6 +21,13 @@ export default GameModel.extend({
         }
     },
 
+    resetResources() {
+        this.set('resources', GameModel.create({
+            actions: 0,
+            mana: 0
+        }));
+    },
+
     drawCard() {
         const deck = this.get('deck');
         const discard = this.get('discard');
