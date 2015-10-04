@@ -10,7 +10,13 @@ export default Component.extend({
 
     actions: {
         playCard(card) {
-            card.execute();
+            const game = this.get('game');
+            const player = this.get('player');
+
+            card.execute({
+                game,
+                player
+            });
         }
     }
 });

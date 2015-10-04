@@ -2,31 +2,17 @@ export default {
     ManaGem: {
         name: 'Mana Gem',
         art: 'PLACEHOLDER',
-        mechanics: [
-            {
-                type: 'resource-grant',
-                resource: 'mana',
-                count: 1
-            }
-        ],
         displayText: "+1 Mana",
-        execute() {
-
+        execute({player}) {
+            player.incrementProperty('resources.mana');
         }
     },
     SimpleOrders: {
         name: 'Simple Orders',
         art: 'PLACEHOLDER',
-        mechanics: [
-            {
-                type: 'resource-grant',
-                resource: 'action',
-                count: 1
-            }
-        ],
         displayText: "+1 Action point",
-        execute() {
-
+        execute({player}) {
+            player.incrementProperty('resources.actions');
         }
     },
     MagicalCommand: {
