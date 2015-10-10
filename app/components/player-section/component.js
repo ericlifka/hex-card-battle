@@ -4,6 +4,7 @@ const { Component, computed } = Ember;
 export default Component.extend({
     classNames: [ 'player-section' ],
 
+    showDialogPrompt: false,
     game: null,
     player: computed.alias('game.phase.activePlayer'),
     hand: computed.alias('player.hand'),
@@ -13,10 +14,12 @@ export default Component.extend({
             const game = this.get('game');
             const player = this.get('player');
 
-            card.execute({
-                game,
-                player
-            });
+            //card.execute({
+            //    game,
+            //    player
+            //});
+
+            this.set('showDialogPrompt', true);
         }
     }
 });
