@@ -1,16 +1,7 @@
 import Ember from 'ember';
+import CancelModalMixin from '../mixins/cancel-modal';
 const { Component, computed } = Ember;
 
-export default Component.extend({
-    classNames: ['modal-footer'],
-
-    showDismiss: computed('cancelDialog', function () {
-        return typeof this.attrs.cancelDialog === 'function';
-    }),
-
-    actions: {
-        dismiss() {
-            this.attrs.cancelDialog();
-        }
-    }
+export default Component.extend(CancelModalMixin, {
+    classNames: ['modal-footer']
 });
