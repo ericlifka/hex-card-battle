@@ -13,6 +13,9 @@
 {{#if showDialogPrompt}}
     {{#modal-dialog}}
         {{modal-dialog.header cancelDialog=(action cancelDialog)}}
-        <div>HI</div>
+        {{#modal-dialog.body}}
+            <div>HI</div>
+        {{/modal-dialog.body}}
+        {{modal-dialog.footer}}
     {{/modal-dialog}}
 {{/if}}
