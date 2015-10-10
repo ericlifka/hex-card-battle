@@ -11,7 +11,8 @@
 {{/flyout-panel}}
 
 {{#if showDialogPrompt}}
-    {{#modal-dialog cancelDialog=(action cancelDialog)}}
+    {{#modal-dialog}}
+        {{modal-dialog.header cancelDialog=(action cancelDialog)}}
         <div>HI</div>
     {{/modal-dialog}}
 {{/if}}
