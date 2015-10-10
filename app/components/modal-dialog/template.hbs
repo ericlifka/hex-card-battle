@@ -1,5 +1,11 @@
 <div class="screen-overlay">
     <div class="modal-positional-wrapper">
+        <div class="header">
+            <span class="title-text">Some Title</span>
+            <button class="icon" {{action "dismiss"}}>
+                <i class="ion-close-round"></i>
+            </button>
+        </div>
         <div class="content">
             {{yield}}
         </div>

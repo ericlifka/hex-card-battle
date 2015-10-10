@@ -1,10 +1,12 @@
 import Ember from 'ember';
-const { Component, computed } = Ember;
+const { Component, computed, K } = Ember;
 
 export default Component.extend({
     classNames: [ 'player-section' ],
 
     showDialogPrompt: false,
+    cancelDialog: null,
+
     game: null,
     player: computed.alias('game.phase.activePlayer'),
     hand: computed.alias('player.hand'),
@@ -19,7 +21,12 @@ export default Component.extend({
             //    player
             //});
 
+            this.set('cancelDialog', () => {
+                this.set('showDialogPrompt', false);
+                this.set('cancelDialog', null);
+            });
             this.set('showDialogPrompt', true);
+
         }
     }
 });
