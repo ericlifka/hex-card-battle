@@ -11,10 +11,7 @@ export default Component.extend({
 
     actions: {
         dismiss() {
-            const cancel = this.attrs.cancelDialog;
-            if (typeof cancel === 'function') {
-                cancel();
-            }
+            this.attrs.cancelDialog();
         }
     }
 });
