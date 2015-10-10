@@ -1,4 +1,10 @@
-<span class="title-text">Some Title</span>
+<span class="title-text">
+    {{#if hasBlock}}
+        {{yield}}
+    {{else}}
+        {{label}}
+    {{/if}}
+</span>
 {{#if showDismiss}}
     <button class="icon" {{action "dismiss"}}>
         <i class="ion-close-round"></i>

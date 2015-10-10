@@ -12,10 +12,14 @@
 
 {{#if showDialogPrompt}}
     {{#modal-dialog}}
-        {{modal-dialog.header cancelDialog=(action cancelDialog)}}
+        {{modal-dialog.header
+            label="Select Card Option"
+            cancelDialog=(action cancelDialog)}}
+
         {{#modal-dialog.body}}
             <div>HI</div>
         {{/modal-dialog.body}}
+
         {{modal-dialog.footer
             cancelDialog=(action cancelDialog)}}
     {{/modal-dialog}}

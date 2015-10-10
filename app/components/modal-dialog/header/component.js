@@ -3,5 +3,6 @@ import CancelModalMixin from '../mixins/cancel-modal';
 const { Component } = Ember;
 
 export default Component.extend(CancelModalMixin, {
-    classNames: ['modal-header']
+    classNames: ['modal-header'],
+    label: ""
 });
