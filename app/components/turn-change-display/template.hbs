@@ -1,6 +1,6 @@
 {{#if isGameStart}}
     {{#simple-modal-dialog}}
-        {{#simple-modal-dialog.header}}Beginning of Game{{/simple-modal-dialog.header}}
+        {{simple-modal-dialog.header label="Beginning of Game"}}
         {{#simple-modal-dialog.body}}Click start to begin the game.{{/simple-modal-dialog.body}}
         {{simple-modal-dialog.footer
             acknowledgeDialog=(action attrs.startGame)}}
@@ -9,7 +9,7 @@
 
 {{#if isTurnStart}}
     {{#simple-modal-dialog}}
-        {{#simple-modal-dialog.header}}Start of Turn{{/simple-modal-dialog.header}}
+        {{simple-modal-dialog.header label="Start of Turn"}}
         {{#simple-modal-dialog.body}}Click begin to start the turn.{{/simple-modal-dialog.body}}
         {{simple-modal-dialog.footer
             acknowledgeDialog=(action attrs.startTurn)}}
