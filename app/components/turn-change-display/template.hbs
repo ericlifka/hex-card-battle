@@ -1,21 +1,17 @@
-<div class="modal-wrapper">
-    <div class="content">
-        {{#if isGameStart}}
-            <div class="modal-banner">
-                <div class="label">Beginning of Game</div>
-            </div>
-            <button {{action attrs.startGame}}>Start Game</button>
-        {{/if}}
+{{#if isGameStart}}
+    {{#simple-modal-dialog}}
+        {{#simple-modal-dialog.header}}Beginning of Game{{/simple-modal-dialog.header}}
+        {{#simple-modal-dialog.body}}Click start to begin the game.{{/simple-modal-dialog.body}}
+        {{simple-modal-dialog.footer
+            acknowledgeDialog=(action attrs.startGame)}}
+    {{/simple-modal-dialog}}
+{{/if}}
 
-        {{#if isTurnStart}}
-            <div class="modal-banner">
-                <div class="label">Beginning of Turn</div>
-            </div>
-            <div class="body">
-                <div class="label">Active Player: {{activePlayer.name}}</div>
-                <div class="turn">Turn: {{turn}}</div>
-                <button {{action attrs.startTurn}}>Begin the turn</button>
-            </div>
-        {{/if}}
-    </div>
-</div>
+{{#if isTurnStart}}
+    {{#simple-modal-dialog}}
+        {{#simple-modal-dialog.header}}Start of Turn{{/simple-modal-dialog.header}}
+        {{#simple-modal-dialog.body}}Click begin to start the turn.{{/simple-modal-dialog.body}}
+        {{simple-modal-dialog.footer
+            acknowledgeDialog=(action attrs.startTurn)}}
+    {{/simple-modal-dialog}}
+{{/if}}

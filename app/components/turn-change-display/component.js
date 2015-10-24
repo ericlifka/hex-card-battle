@@ -3,8 +3,7 @@ const { Component, computed } = Ember;
 
 export default Component.extend({
     classNameBindings: [
-        ':turn-change-display',
-        'visible::hidden'
+        ':turn-change-display'
     ],
 
     game: null,
@@ -15,6 +14,5 @@ export default Component.extend({
     turn: computed.alias('phase.turn'),
 
     isGameStart: computed.equal('gamePhase', 'gameStart'),
-    isTurnStart: computed.equal('gamePhase', 'turnStart'),
-    visible: computed.or('isGameStart', 'isTurnStart')
+    isTurnStart: computed.equal('gamePhase', 'turnStart')
 });
