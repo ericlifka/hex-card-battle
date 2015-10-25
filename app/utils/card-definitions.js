@@ -3,7 +3,7 @@ export default {
         name: 'Mana Gem',
         art: 'PLACEHOLDER',
         displayText: "+1 Mana",
-        execute({player}) {
+        execute({ player }) {
             player.incrementProperty('resources.mana');
         }
     },
@@ -11,7 +11,7 @@ export default {
         name: 'Simple Orders',
         art: 'PLACEHOLDER',
         displayText: "+1 Action point",
-        execute({player}) {
+        execute({ player }) {
             player.incrementProperty('resources.actions');
         }
     },
