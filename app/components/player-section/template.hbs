@@ -11,16 +11,11 @@
 {{/flyout-panel}}
 
 {{#if showDialogPrompt}}
-    {{#modal-dialog}}
-        {{modal-dialog.header
-            label="Select Card Option"
+    {{#simple-modal-dialog cancelDialog=(action cancelDialog)}}
+        {{simple-modal-dialog.header label="Select Card Option"}}
+        {{#simple-modal-dialog.body}}HI{{/simple-modal-dialog.body}}
+        {{simple-modal-dialog.footer
+            cancelDialog="Cancel"
             cancelDialog=(action cancelDialog)}}
-
-        {{#modal-dialog.body}}
-            <div>HI</div>
-        {{/modal-dialog.body}}
-
-        {{modal-dialog.footer
-            cancelDialog=(action cancelDialog)}}
-    {{/modal-dialog}}
+    {{/simple-modal-dialog}}
 {{/if}}
