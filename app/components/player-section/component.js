@@ -21,12 +21,24 @@ export default Component.extend({
             //    player
             //});
 
-            this.set('cancelDialog', () => {
-                this.set('showDialogPrompt', false);
-                this.set('cancelDialog', null);
-            });
-            this.set('showDialogPrompt', true);
+            if (card.options) {
+                this.set('selectCardOptions', card.options);
+                this.set('chooseCardOption', option => {
+                    card.execute({
+                        player,
+                        option
+                    });
+                    this.set('showDialogPrompt', false);
+                });
+                this.set('cancelDialog', () => {
+                    this.set('showDialogPrompt', false)
+                });
 
+                this.set('showDialogPrompt', true);
+            }
+            else {
+                card.execute({ player });
+            }
         }
     }
 });
