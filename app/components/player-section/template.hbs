@@ -4,7 +4,7 @@
         {{#each hand as |card index|}}
             <div class="card-slot {{index}}">
                 {{interactive-card card=card}}
-                <button class="select-card" {{action "playCard" card}}>Play</button>
+                <button class="game-button select-card" {{action "playCard" card}}>Play</button>
             </div>
         {{/each}}
     </div>
