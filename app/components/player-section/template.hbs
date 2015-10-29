@@ -14,11 +14,13 @@
     {{#simple-modal-dialog cancelDialog=(action cancelDialog)}}
         {{simple-modal-dialog.header label="Select Card Option"}}
         {{#simple-modal-dialog.body}}
-            {{#each selectCardOptions as |option index|}}
-                <button class="card-option" {{action chooseCardOption index}}>
-                    {{option}}
-                </button>
-            {{/each}}
+            <div class="card-options">
+                {{#each selectCardOptions as |option index|}}
+                    <button class="option" {{action chooseCardOption index}}>
+                        {{option}}
+                    </button>
+                {{/each}}
+            </div>
         {{/simple-modal-dialog.body}}
         {{simple-modal-dialog.footer
             cancelDialog="Cancel"
