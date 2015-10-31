@@ -16,10 +16,10 @@ export default Component.extend({
             const game = this.get('game');
             const player = this.get('player');
 
-            //card.execute({
+            // card.execute({
             //    game,
             //    player
-            //});
+            // });
 
             if (card.options) {
                 this.set('selectCardOptions', card.options);
@@ -31,7 +31,7 @@ export default Component.extend({
                     this.set('showDialogPrompt', false);
                 });
                 this.set('cancelDialog', () => {
-                    this.set('showDialogPrompt', false)
+                    this.set('showDialogPrompt', false);
                 });
 
                 this.set('showDialogPrompt', true);
