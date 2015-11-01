@@ -38,8 +38,8 @@ export default {
             "+1 Action point"
         ],
         options: [ '+1 Mana', '+1 Action' ],
-        execute({ player, choice }) {
-            if (choice === 1) {
+        execute({ player, option }) {
+            if (option === 1) {
                 player.incrementProperty('resources.actions');
             }
             else {
