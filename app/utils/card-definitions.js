@@ -5,7 +5,6 @@ export default {
         displayText: "+1 Mana",
         execute({ player }) {
             player.incrementProperty('resources.mana');
-            console.log('card executed:', arguments);
         }
     },
     SimpleOrders: {
@@ -14,7 +13,6 @@ export default {
         displayText: "+1 Action point",
         execute({ player }) {
             player.incrementProperty('resources.actions');
-            console.log('card executed:', arguments);
         }
     },
     MagicalCommand: {
@@ -45,7 +43,6 @@ export default {
             else {
                 player.incrementProperty('resources.mana');
             }
-            console.log('card executed:', arguments);
         }
     },
     SummonBasicUnit: {
