@@ -5,22 +5,33 @@
   background-color: #fff;
   box-shadow: 0 0 30px 0 #EAEAEA;
 
-  .hand {
-    .card-slot {
-      display: flex;
-      flex-direction: column;
+  .content {
+    display: flex;
+    flex-direction: row;
 
-      margin-right: 10px;
-      &:last-child {
-        margin-right: 0;
-      }
+    .resource-display {
+      order: 1;
+    }
 
-      .interactive-card {
-        margin-right: 0;
-      }
+    .hand {
+      order: 2;
 
-      .select-card {
-        margin-top: 10px;
+      .card-slot {
+        display: flex;
+        flex-direction: column;
+
+        margin-right: 10px;
+        &:last-child {
+          margin-right: 0;
+        }
+
+        .interactive-card {
+          margin-right: 0;
+        }
+
+        .select-card {
+          margin-top: 10px;
+        }
       }
     }
   }
