@@ -1,13 +1,15 @@
 {{#flyout-panel title="Player section" position="bottom-left"}}
-    {{player-section.resource-display game=game}}
+    <div class="player-section-content">
+        {{player-section.resource-display game=game}}
 
-    <div class="hand card-row">
-        {{#each hand as |card index|}}
-            <div class="card-slot {{index}}">
-                {{interactive-card card=card}}
-                <button class="game-button select-card" {{action "playCard" card}}>Play</button>
-            </div>
-        {{/each}}
+        <div class="hand card-row">
+            {{#each hand as |card index|}}
+                <div class="card-slot {{index}}">
+                    {{interactive-card card=card}}
+                    <button class="game-button select-card" {{action "playCard" card}}>Play</button>
+                </div>
+            {{/each}}
+        </div>
     </div>
 {{/flyout-panel}}
 
