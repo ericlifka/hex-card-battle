@@ -45,6 +45,10 @@ export default GameModel.extend({
         hand.pushObject(deck.popObject());
     },
 
+    discardCard(index) {
+
+    },
+
     refreshDeck() {
         const deck = this.get('deck');
         const discard = this.get('discard');

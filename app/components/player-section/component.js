@@ -12,7 +12,7 @@ export default Component.extend({
     hand: computed.alias('player.hand'),
 
     actions: {
-        playCard(card) {
+        playCard(card, index) {
             const game = this.get('game');
             const player = this.get('player');
 
@@ -24,6 +24,7 @@ export default Component.extend({
                         player,
                         option
                     });
+                    player.discardCard(index);
                     this.set('showDialogPrompt', false);
                 });
                 this.set('cancelDialog', () => {
@@ -34,6 +35,7 @@ export default Component.extend({
             }
             else {
                 card.execute({ game, player });
+                player.discardCard(index);
             }
         }
     }
