@@ -25,6 +25,7 @@ export default Component.extend({
                 this.set('selectCardOptions', card.options);
                 this.set('chooseCardOption', option => {
                     card.execute({
+                        game,
                         player,
                         option
                     });
@@ -37,7 +38,7 @@ export default Component.extend({
                 this.set('showDialogPrompt', true);
             }
             else {
-                card.execute({ player });
+                card.execute({ game, player });
             }
         }
     }
