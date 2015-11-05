@@ -16,11 +16,6 @@ export default Component.extend({
             const game = this.get('game');
             const player = this.get('player');
 
-            // card.execute({
-            //    game,
-            //    player
-            // });
-
             if (card.options) {
                 this.set('selectCardOptions', card.options);
                 this.set('chooseCardOption', option => {
