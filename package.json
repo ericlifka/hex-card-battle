@@ -14,33 +14,34 @@
   },
   "repository": "https://github.com/ericlifka/hex-card-battle.git",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 6.0.0"
   },
   "author": "Eric Lifka",
   "license": "MIT",
   "devDependencies": {
-    "broccoli-asset-rev": "^2.1.2",
-    "broccoli-funnel": "0.2.3",
-    "broccoli-merge-trees": "0.2.1",
-    "ember-cli": "1.13.8",
-    "ember-cli-app-version": "0.5.0",
-    "ember-cli-babel": "^5.1.3",
-    "ember-cli-content-security-policy": "0.4.0",
-    "ember-cli-dependency-checker": "^1.0.1",
-    "ember-cli-htmlbars": "0.7.9",
-    "ember-cli-htmlbars-inline-precompile": "^0.2.0",
-    "ember-cli-ic-ajax": "0.2.1",
-    "ember-cli-inject-live-reload": "^1.3.1",
-    "ember-cli-less": "1.3.3",
-    "ember-cli-qunit": "^1.0.0",
-    "ember-cli-release": "0.2.3",
-    "ember-cli-simple-modal-dialog": "git+https://github.com/ericlifka/ember-cli-simple-modal-dialog.git",
-    "ember-cli-sri": "^1.0.3",
-    "ember-cli-uglify": "^1.2.0",
-    "ember-disable-proxy-controllers": "^1.0.0",
-    "ember-export-application-global": "^1.0.3",
-    "ember-suave": "1.0.0",
-    "ember-truth-helpers": "1.1.0",
-    "less": "2.5.1"
+    "broccoli-asset-rev": "^2.5.0",
+    "broccoli-funnel": "^2.0.2",
+    "broccoli-merge-trees": "^2.0.0",
+    "ember-cli": "~2.15.0",
+    "ember-cli-app-version": "^3.0.0",
+    "ember-cli-babel": "^6.3.0",
+    "ember-cli-dependency-checker": "^3.1.0",
+    "ember-cli-htmlbars": "^2.0.1",
+    "ember-cli-htmlbars-inline-precompile": "^1.0.5",
+    "ember-cli-inject-live-reload": "^1.4.1",
+    "ember-cli-less": "^1.2.0",
+    "ember-cli-qunit": "^4.0.2",
+    "ember-cli-sri": "^2.1.0",
+    "ember-cli-uglify": "^2.1.0",
+    "ember-disable-proxy-controllers": "^1.0.1",
+    "ember-export-application-global": "^2.0.0",
+    "loader.js": "^4.2.3",
+    "ember-cli-shims": "^1.1.0"
+  },
+  "dependencies": {
+    "ember-source": "~2.14.1",
+    "ember-resolver": "^4.0.0",
+    "ember-truth-helpers": "^2.1.0",
+    "ember-load-initializers": "^1.0.0"
   }
 }
