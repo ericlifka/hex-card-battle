@@ -1,0 +1,120 @@
+.SMD-simple-modal-dialog {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.SMD-simple-modal-dialog.clickable {
+  cursor: pointer;
+}
+
+.SMD-screen-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SMD-modal-positional-wrapper {
+  background-color: white;
+  cursor: initial;
+  box-shadow: 0 0 40px 0 #444;
+}
+
+.SMD-content {
+  min-width: 400px;
+  font-family: "Helvetica Neue", Ariel, sans-serif;
+}
+
+.SMD-header, .SMD-footer {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  padding: 5px;
+}
+.SMD-header {
+  flex-direction: row;
+  background-color: #604f66;
+  color: #eee0eb;
+}
+.SMD-footer {
+  flex-direction: row-reverse;
+  color: #604f66;
+}
+
+.SMD-header .title-text {
+  flex-grow: 1;
+  padding: 0 20px;
+  line-height: 50px;
+}
+.SMD-header .dismiss {
+  width: 50px;
+  height: 50px;
+  color: rgba(0, 0, 0, 0.0);
+}
+.SMD-header .dismiss:hover {
+  background-color: #74617b;
+}
+.SMD-header .dismiss .icon.close {
+  display: inline-block;
+  transform: translate(-4px);
+  margin-top: 3px;
+}
+.SMD-header .dismiss .icon.close:before,
+.SMD-header .dismiss .icon.close:after {
+  content: " ";
+  display: block;
+  width: 40px;
+  height: 6px;
+  background-color: #3b3041;
+  border-radius: 3px;
+}
+.SMD-header .dismiss:hover .icon.close:before,
+.SMD-header .dismiss:hover .icon.close:after {
+  background-color: #4a3c50;
+}
+.SMD-header .dismiss .icon.close:before {
+  transform: rotate(45deg) translate(4px);
+}
+.SMD-header .dismiss .icon.close:after {
+  transform: rotate(-45deg) translate(4px);
+}
+
+.SMD-body {
+  padding: 20px;
+  font-size: 14px;
+  color: #604f66;
+}
+
+.SMD-footer .SMD-button {
+  padding: 0 16px;
+}
+.SMD-footer .dismiss {
+  order: 2;
+}
+.SMD-footer .acknowledge {
+  order: 1;
+}
+.SMD-footer .dismiss:hover {
+  text-decoration: underline;
+}
+.SMD-footer .acknowledge:hover {
+  background-color: #74617b;
+  color: #f9eaf6
+}
+
+.SMD-button {
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  background-color: #604f66;
+  color: #eee0eb;
+  font-size: 16px;
+}
+.SMD-button.dismiss {
+  background-color: rgba(0, 0, 0, 0.0);
+  color: #604f66;
+}

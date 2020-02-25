@@ -1,0 +1,10 @@
+{{#if showDismiss}}
+    <button type="button" class="SMD-button dismiss" {{action "dismiss"}}>
+        {{cancelText}}
+    </button>
+{{/if}}
+{{#if showAcknowledge}}
+    <button type="button" class="SMD-button acknowledge" {{action "acknowledge"}}>
+        {{acknowledgeText}}
+    </button>
+{{/if}}

@@ -1,0 +1,12 @@
+<span class="title-text">
+    {{#if hasBlock}}
+        {{yield}}
+    {{else}}
+        {{label}}
+    {{/if}}
+</span>
+{{#if showDismiss}}
+    <button type="button" class="SMD-button dismiss" {{action "dismiss"}}>
+        <i class="icon close"></i>
+    </button>
+{{/if}}
