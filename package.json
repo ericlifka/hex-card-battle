@@ -10,7 +10,8 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember test"
+    "test": "ember test",
+    "deploy": "ember build && cp -r dist/ docs/"
   },
   "repository": "https://github.com/ericlifka/hex-card-battle.git",
   "engines": {

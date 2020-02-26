@@ -1,0 +1,786 @@
+html,
+body {
+  background-color: white;
+  font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+  color: #606060;
+  margin: 0;
+}
+.hidden {
+  display: none;
+}
+.card-row {
+  display: flex;
+  flex-direction: row;
+}
+.card-row .interactive-card {
+  margin-right: 10px;
+}
+.card-row .interactive-card:last-child {
+  margin-right: 0;
+}
+.game-button {
+  border: 1px solid #604f66;
+  background-color: #eee0eb;
+  border-radius: 0;
+  padding: 10px;
+  cursor: pointer;
+  color: #604f66;
+  transition: background-color 0.2s, color 0.2s;
+}
+.game-button:hover {
+  color: #eee0eb;
+  background-color: #604f66;
+}
+.modal-banner {
+  display: flex;
+  color: #D0D0D0;
+  background-color: #666666;
+  font-size: 16px;
+  height: 40px;
+  align-items: center;
+  padding-left: 12px;
+}
+.SMD-simple-modal-dialog {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.SMD-simple-modal-dialog.clickable {
+  cursor: pointer;
+}
+.SMD-screen-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.SMD-modal-positional-wrapper {
+  background-color: white;
+  cursor: initial;
+  box-shadow: 0 0 40px 0 #444;
+}
+.SMD-content {
+  min-width: 400px;
+  font-family: "Helvetica Neue", Ariel, sans-serif;
+}
+.SMD-header,
+.SMD-footer {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  padding: 5px;
+}
+.SMD-header {
+  flex-direction: row;
+  background-color: #604f66;
+  color: #eee0eb;
+}
+.SMD-footer {
+  flex-direction: row-reverse;
+  color: #604f66;
+}
+.SMD-header .title-text {
+  flex-grow: 1;
+  padding: 0 20px;
+  line-height: 50px;
+}
+.SMD-header .dismiss {
+  width: 50px;
+  height: 50px;
+  color: rgba(0, 0, 0, 0);
+}
+.SMD-header .dismiss:hover {
+  background-color: #74617b;
+}
+.SMD-header .dismiss .icon.close {
+  display: inline-block;
+  transform: translate(-4px);
+  margin-top: 3px;
+}
+.SMD-header .dismiss .icon.close:before,
+.SMD-header .dismiss .icon.close:after {
+  content: " ";
+  display: block;
+  width: 40px;
+  height: 6px;
+  background-color: #3b3041;
+  border-radius: 3px;
+}
+.SMD-header .dismiss:hover .icon.close:before,
+.SMD-header .dismiss:hover .icon.close:after {
+  background-color: #4a3c50;
+}
+.SMD-header .dismiss .icon.close:before {
+  transform: rotate(45deg) translate(4px);
+}
+.SMD-header .dismiss .icon.close:after {
+  transform: rotate(-45deg) translate(4px);
+}
+.SMD-body {
+  padding: 20px;
+  font-size: 14px;
+  color: #604f66;
+}
+.SMD-footer .SMD-button {
+  padding: 0 16px;
+}
+.SMD-footer .dismiss {
+  order: 2;
+}
+.SMD-footer .acknowledge {
+  order: 1;
+}
+.SMD-footer .dismiss:hover {
+  text-decoration: underline;
+}
+.SMD-footer .acknowledge:hover {
+  background-color: #74617b;
+  color: #f9eaf6;
+}
+.SMD-button {
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  background-color: #604f66;
+  color: #eee0eb;
+  font-size: 16px;
+}
+.SMD-button.dismiss {
+  background-color: rgba(0, 0, 0, 0);
+  color: #604f66;
+}
+.card-market {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: #fff;
+  box-shadow: 0 0 30px 0 #EAEAEA;
+}
+.dynamic-select {
+  display: flex;
+}
+.dynamic-select select {
+  width: 100px;
+  margin-left: auto;
+}
+.flyout-panel {
+  display: flex;
+  flex-direction: column;
+}
+.flyout-panel.button-on-right .panel-label {
+  justify-content: flex-end;
+}
+.flyout-panel.button-on-right .panel-label .label {
+  order: 1;
+}
+.flyout-panel.button-on-right .panel-label .icon {
+  order: 2;
+}
+.flyout-panel.button-on-left .panel-label {
+  justify-content: flex-start;
+}
+.flyout-panel.button-on-left .panel-label .icon {
+  order: 1;
+}
+.flyout-panel.button-on-left .panel-label .label {
+  order: 2;
+}
+.flyout-panel.title-on-top .panel-label {
+  order: 1;
+}
+.flyout-panel.title-on-top .content {
+  order: 2;
+}
+.flyout-panel.title-on-bottom .content {
+  order: 1;
+}
+.flyout-panel.title-on-bottom .panel-label {
+  order: 2;
+}
+.flyout-panel .panel-label {
+  border: 0;
+  padding: 0;
+  width: 100%;
+  cursor: pointer;
+}
+.flyout-panel .panel-label:focus {
+  outline: none;
+}
+.flyout-panel .panel-label .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  background-color: #8a8a8a;
+}
+.flyout-panel .panel-label:hover .icon {
+  background-color: #b2b2b2;
+  color: #ffffff;
+}
+.flyout-panel .panel-label:active .icon {
+  color: #666666;
+}
+.flyout-panel .panel-label .label {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.game-board {
+  padding-left: 70px;
+}
+.hex-tile {
+  position: relative;
+  display: inline-block;
+  margin-top: 33px;
+  min-width: 104px;
+  margin-left: 3px;
+  height: 60px;
+  background-color: transparent;
+  /* custom 4 */
+  /* Main Primary color */
+  /* Main Secondary color (1) */
+  /* Main Secondary color (2) */
+  /* Main Complement color */
+}
+.hex-tile:before {
+  position: absolute;
+  content: " ";
+  width: 0;
+  height: 0;
+  top: -30px;
+  border-bottom: 30px solid transparent;
+  border-left: 52px solid transparent;
+  border-right: 52px solid transparent;
+}
+.hex-tile:after {
+  position: absolute;
+  content: " ";
+  width: 0;
+  height: 0;
+  bottom: -30px;
+  border-top: 30px solid transparent;
+  border-left: 52px solid transparent;
+  border-right: 52px solid transparent;
+}
+.hex-tile .resource {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  left: 32px;
+  top: 10px;
+}
+.hex-tile .coordinate {
+  position: absolute;
+  z-index: 1;
+  color: #696969;
+}
+.hex-tile .coordinate.x {
+  right: 5px;
+}
+.hex-tile .coordinate.y {
+  left: 5px;
+}
+.hex-tile .coordinate.z {
+  bottom: -25px;
+  left: 47px;
+}
+.hex-tile.empty {
+  /* normal */
+  background-color: #fff;
+  cursor: pointer;
+  /* hover */
+  /* selected */
+  /* secondary selection */
+  cursor: default;
+}
+.hex-tile.empty:before {
+  border-bottom-color: #fff;
+}
+.hex-tile.empty:after {
+  border-top-color: #fff;
+}
+.hex-tile.empty:hover,
+.hex-tile.empty.active:hover,
+.hex-tile.empty.secondary:hover {
+  background-color: #fff;
+}
+.hex-tile.empty:hover:before,
+.hex-tile.empty.active:hover:before,
+.hex-tile.empty.secondary:hover:before {
+  border-bottom-color: #fff;
+}
+.hex-tile.empty:hover:after,
+.hex-tile.empty.active:hover:after,
+.hex-tile.empty.secondary:hover:after {
+  border-top-color: #fff;
+}
+.hex-tile.empty.active {
+  background-color: #fff;
+}
+.hex-tile.empty.active:before {
+  border-bottom-color: #fff;
+}
+.hex-tile.empty.active:after {
+  border-top-color: #fff;
+}
+.hex-tile.empty.secondary {
+  background-color: #fff;
+}
+.hex-tile.empty.secondary:before {
+  border-bottom-color: #fff;
+}
+.hex-tile.empty.secondary:after {
+  border-top-color: #fff;
+}
+.hex-tile.normal {
+  /* normal */
+  background-color: #dbdbdb;
+  cursor: pointer;
+  /* hover */
+  /* selected */
+  /* secondary selection */
+}
+.hex-tile.normal:before {
+  border-bottom-color: #dbdbdb;
+}
+.hex-tile.normal:after {
+  border-top-color: #dbdbdb;
+}
+.hex-tile.normal:hover,
+.hex-tile.normal.active:hover,
+.hex-tile.normal.secondary:hover {
+  background-color: #ffffff;
+}
+.hex-tile.normal:hover:before,
+.hex-tile.normal.active:hover:before,
+.hex-tile.normal.secondary:hover:before {
+  border-bottom-color: #ffffff;
+}
+.hex-tile.normal:hover:after,
+.hex-tile.normal.active:hover:after,
+.hex-tile.normal.secondary:hover:after {
+  border-top-color: #ffffff;
+}
+.hex-tile.normal.active {
+  background-color: #f4f4f4;
+}
+.hex-tile.normal.active:before {
+  border-bottom-color: #f4f4f4;
+}
+.hex-tile.normal.active:after {
+  border-top-color: #f4f4f4;
+}
+.hex-tile.normal.secondary {
+  background-color: #e7e7e7;
+}
+.hex-tile.normal.secondary:before {
+  border-bottom-color: #e7e7e7;
+}
+.hex-tile.normal.secondary:after {
+  border-top-color: #e7e7e7;
+}
+.hex-tile.forest {
+  /* normal */
+  background-color: #2D882D;
+  cursor: pointer;
+  /* hover */
+  /* selected */
+  /* secondary selection */
+}
+.hex-tile.forest:before {
+  border-bottom-color: #2D882D;
+}
+.hex-tile.forest:after {
+  border-top-color: #2D882D;
+}
+.hex-tile.forest:hover,
+.hex-tile.forest.active:hover,
+.hex-tile.forest.secondary:hover {
+  background-color: #7AC47A;
+}
+.hex-tile.forest:hover:before,
+.hex-tile.forest.active:hover:before,
+.hex-tile.forest.secondary:hover:before {
+  border-bottom-color: #7AC47A;
+}
+.hex-tile.forest:hover:after,
+.hex-tile.forest.active:hover:after,
+.hex-tile.forest.secondary:hover:after {
+  border-top-color: #7AC47A;
+}
+.hex-tile.forest.active {
+  background-color: #034C03;
+}
+.hex-tile.forest.active:before {
+  border-bottom-color: #034C03;
+}
+.hex-tile.forest.active:after {
+  border-top-color: #034C03;
+}
+.hex-tile.forest.secondary {
+  background-color: #146A14;
+}
+.hex-tile.forest.secondary:before {
+  border-bottom-color: #146A14;
+}
+.hex-tile.forest.secondary:after {
+  border-top-color: #146A14;
+}
+.hex-tile.lake {
+  /* normal */
+  background-color: #2E4272;
+  cursor: pointer;
+  /* hover */
+  /* selected */
+  /* secondary selection */
+}
+.hex-tile.lake:before {
+  border-bottom-color: #2E4272;
+}
+.hex-tile.lake:after {
+  border-top-color: #2E4272;
+}
+.hex-tile.lake:hover,
+.hex-tile.lake.active:hover,
+.hex-tile.lake.secondary:hover {
+  background-color: #6D7DA4;
+}
+.hex-tile.lake:hover:before,
+.hex-tile.lake.active:hover:before,
+.hex-tile.lake.secondary:hover:before {
+  border-bottom-color: #6D7DA4;
+}
+.hex-tile.lake:hover:after,
+.hex-tile.lake.active:hover:after,
+.hex-tile.lake.secondary:hover:after {
+  border-top-color: #6D7DA4;
+}
+.hex-tile.lake.active {
+  background-color: #091940;
+}
+.hex-tile.lake.active:before {
+  border-bottom-color: #091940;
+}
+.hex-tile.lake.active:after {
+  border-top-color: #091940;
+}
+.hex-tile.lake.secondary {
+  background-color: #182B59;
+}
+.hex-tile.lake.secondary:before {
+  border-bottom-color: #182B59;
+}
+.hex-tile.lake.secondary:after {
+  border-top-color: #182B59;
+}
+.hex-tile.resource-primary {
+  /* normal */
+  background-color: #2D882D;
+  cursor: pointer;
+  /* hover */
+  /* selected */
+  /* secondary selection */
+}
+.hex-tile.resource-primary:before {
+  border-bottom-color: #2D882D;
+}
+.hex-tile.resource-primary:after {
+  border-top-color: #2D882D;
+}
+.hex-tile.resource-primary:hover,
+.hex-tile.resource-primary.active:hover,
+.hex-tile.resource-primary.secondary:hover {
+  background-color: #7AC47A;
+}
+.hex-tile.resource-primary:hover:before,
+.hex-tile.resource-primary.active:hover:before,
+.hex-tile.resource-primary.secondary:hover:before {
+  border-bottom-color: #7AC47A;
+}
+.hex-tile.resource-primary:hover:after,
+.hex-tile.resource-primary.active:hover:after,
+.hex-tile.resource-primary.secondary:hover:after {
+  border-top-color: #7AC47A;
+}
+.hex-tile.resource-primary.active {
+  background-color: #034C03;
+}
+.hex-tile.resource-primary.active:before {
+  border-bottom-color: #034C03;
+}
+.hex-tile.resource-primary.active:after {
+  border-top-color: #034C03;
+}
+.hex-tile.resource-primary.secondary {
+  background-color: #146A14;
+}
+.hex-tile.resource-primary.secondary:before {
+  border-bottom-color: #146A14;
+}
+.hex-tile.resource-primary.secondary:after {
+  border-top-color: #146A14;
+}
+.hex-tile.resource-primary .resource {
+  background-color: #572A72;
+}
+.hex-tile.resource-secondary {
+  /* normal */
+  background-color: #2D882D;
+  cursor: pointer;
+  /* hover */
+  /* selected */
+  /* secondary selection */
+}
+.hex-tile.resource-secondary:before {
+  border-bottom-color: #2D882D;
+}
+.hex-tile.resource-secondary:after {
+  border-top-color: #2D882D;
+}
+.hex-tile.resource-secondary:hover,
+.hex-tile.resource-secondary.active:hover,
+.hex-tile.resource-secondary.secondary:hover {
+  background-color: #7AC47A;
+}
+.hex-tile.resource-secondary:hover:before,
+.hex-tile.resource-secondary.active:hover:before,
+.hex-tile.resource-secondary.secondary:hover:before {
+  border-bottom-color: #7AC47A;
+}
+.hex-tile.resource-secondary:hover:after,
+.hex-tile.resource-secondary.active:hover:after,
+.hex-tile.resource-secondary.secondary:hover:after {
+  border-top-color: #7AC47A;
+}
+.hex-tile.resource-secondary.active {
+  background-color: #034C03;
+}
+.hex-tile.resource-secondary.active:before {
+  border-bottom-color: #034C03;
+}
+.hex-tile.resource-secondary.active:after {
+  border-top-color: #034C03;
+}
+.hex-tile.resource-secondary.secondary {
+  background-color: #146A14;
+}
+.hex-tile.resource-secondary.secondary:before {
+  border-bottom-color: #146A14;
+}
+.hex-tile.resource-secondary.secondary:after {
+  border-top-color: #146A14;
+}
+.hex-tile.resource-secondary .resource {
+  background-color: #A7383D;
+}
+.zoom-control {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  margin-top: -40px;
+}
+.zoom-control button {
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+  color: #666;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 30px 0 #EAEAEA;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+.zoom-control button:focus {
+  outline: none;
+}
+.zoom-control button:hover {
+  color: #000;
+  background-color: #f3f3f3;
+}
+.zoom-control button:active {
+  font-size: 20px;
+  background-color: #ffffff;
+}
+.hex-board {
+  padding-bottom: 50px;
+}
+.hex-board .grid.zoom-0 {
+  transform: scale(1.3333);
+}
+.hex-board .grid.zoom-1 {
+  transform: scale(1);
+}
+.hex-board .grid.zoom-2 {
+  transform: scale(0.6666);
+}
+.hex-board .grid.zoom-3 {
+  transform: scale(0.5);
+}
+.hex-board .grid.zoom-4 {
+  transform: scale(0.3333);
+}
+.hex-board .grid .row {
+  display: flex;
+}
+.hex-board .grid .row:nth-child(odd) {
+  margin-left: 53px;
+}
+.interactive-card {
+  width: 150px;
+  height: 200px;
+  background-color: black;
+  border-radius: 10px;
+  font-size: 12px;
+  display: flex;
+}
+.interactive-card .card-internal {
+  background-color: #fff;
+  flex-grow: 1;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.interactive-card .card-internal .header {
+  background-color: #73B6CC;
+  color: white;
+  margin-left: -3px;
+  margin-right: -3px;
+  margin-top: -3px;
+  border-radius: 3px;
+  padding: 1px 7px;
+}
+.interactive-card .card-internal .art {
+  height: 75px;
+  background-color: lightgrey;
+}
+.interactive-card .card-internal .rules {
+  border: 3px solid #f3f3f3;
+  border-radius: 3px;
+  margin-left: -3px;
+  margin-right: -3px;
+  margin-bottom: -3px;
+  padding: 3px;
+  flex-grow: 1;
+}
+.interactive-card .card-internal .rules p {
+  margin: 0;
+}
+.player-display {
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 10px 40px 10px 30px;
+  border-bottom-right-radius: 5px;
+  background-color: white;
+  box-shadow: 0 0 30px 0 #EAEAEA;
+}
+.player-display .player {
+  font-size: 24px;
+  line-height: 2;
+}
+.player-display .player.active {
+  font-weight: bold;
+  color: #000053;
+}
+.player-section {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+  box-shadow: 0 0 30px 0 #EAEAEA;
+}
+.player-section .player-section-content {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
+.player-section .player-section-content .resource-display {
+  order: 1;
+  margin-right: 20px;
+}
+.player-section .player-section-content .hand {
+  order: 2;
+}
+.player-section .player-section-content .hand .card-slot {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}
+.player-section .player-section-content .hand .card-slot:last-child {
+  margin-right: 0;
+}
+.player-section .player-section-content .hand .card-slot .interactive-card {
+  margin-right: 0;
+}
+.player-section .player-section-content .hand .card-slot .select-card {
+  margin-top: 10px;
+}
+.player-section .card-options {
+  display: flex;
+  flex-direction: column;
+}
+.player-section .card-options .option {
+  margin: 5px;
+}
+.player-section .resource-display {
+  display: flex;
+  flex-direction: column;
+}
+.setup-game-component {
+  width: 300px;
+  margin-left: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.setup-game-component .section {
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+.setup-game-component .section .header {
+  margin-left: -10px;
+  font-size: 16px;
+}
+.setup-game-component .players {
+  margin-left: 10px;
+}
+.setup-game-component .players .player-input {
+  display: flex;
+}
+.setup-game-component .players .player-input input {
+  width: 95px;
+  margin-left: auto;
+}
+.setup-game-component .submit-button {
+  display: flex;
+}
+.setup-game-component .submit-button button {
+  width: 100px;
+  margin-left: auto;
+}
+.turn-change-display .modal-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.turn-change-display .modal-wrapper .content {
+  background-color: white;
+  min-width: 200px;
+  min-height: 200px;
+}
+/*# sourceMappingURL=/assets/hex-card-battle.css.map */
