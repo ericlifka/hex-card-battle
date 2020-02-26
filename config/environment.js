@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'hex-card-battle',
     environment: environment,
-    baseURL: '/',
+    baseURL: '/hex-card-battle',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {

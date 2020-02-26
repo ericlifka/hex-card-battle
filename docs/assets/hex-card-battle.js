@@ -1961,6 +1961,6 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("hex-card-battle/app")["default"].create({"name":"hex-card-battle","version":"0.1.0+57849833"});
+  require("hex-card-battle/app")["default"].create({"name":"hex-card-battle","version":"0.1.0+ceaa94ad"});
 }
 //# sourceMappingURL=hex-card-battle.map
