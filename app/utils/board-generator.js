@@ -27,16 +27,16 @@ export default {
 
     emptyGrid(width) {
         const type = 'empty';
-        const grid = [];
+        const grid = Ember.A([]);
 
         for (let h = 0; h < width; h++) {
-            const row = [];
+            const row = Ember.A([]);
 
             for (let w = 0; w < width; w++) {
-                row.push(GameModel.create({ type }));
+                row.pushObject(GameModel.create({ type }));
             }
 
-            grid.push(row);
+            grid.pushObject(row);
         }
 
         this.setCubeCoords(grid);

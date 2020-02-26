@@ -1,15 +1,14 @@
 <div class="grid {{zoomClass}}">
     {{#each grid as |row|}}
-
-        <div class="row">
-            {{#each row as |hex|}}
-                {{hex-board.hex-tile hex=hex game=game}}
-            {{/each}}
-        </div>
+      <div class="row">
+        {{#each row as |hex|}}
+          {{hex-board/hex-tile hex=hex game=game}}
+        {{/each}}
+      </div>
 
     {{/each}}
 </div>
 
-{{hex-board.zoom-control
+{{hex-board/zoom-control
     zoomIn=(action 'zoomIn')
     zoomOut=(action 'zoomOut')}}

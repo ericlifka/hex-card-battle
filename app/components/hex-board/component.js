@@ -11,6 +11,10 @@ export default Component.extend({
     zoom: 1,
     grid: computed.alias('game.board.grid'),
 
+    debugGame: Ember.observer('game', 'game.board.grid', function () {
+      window.activeGrid = this.get('grid');
+    }).on('init'),
+
     zoomClass: computed('zoom', function () {
         return `zoom-${this.get('zoom')}`;
     }),

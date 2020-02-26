@@ -9,6 +9,10 @@ export default Component.extend({
     game: null,
     hex: null,
 
+    chrip: Ember.observer('hex', function() {
+      console.log('hex-tile lives!');
+    }).on('init'),
+
     hasResource: computed('hex.type', function () {
         const type = this.get('hex.type');
 
